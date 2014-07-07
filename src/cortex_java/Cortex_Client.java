@@ -12,9 +12,10 @@ package cortex_java;
 public class Cortex_Client {
 
     public static void main(String args[]) {
-
+        Renderer r = new Renderer();
         View vw = new View();
-        vw.setDisplayImage(ResourceLoader.getImage("img.png"));
+        vw.setDisplayImage(r.renderAndGetNewScene());
+        
         Control control = new Control();
         System.out.println("no keys pressed");
 
@@ -22,5 +23,8 @@ public class Cortex_Client {
         vw.getDisplayPanel().setFocusable(true);
         vw.getDisplayPanel().requestFocusInWindow();
         vw.getDisplayPanel().addKeyListener(control);
+        
+        
+        
     }
 }
