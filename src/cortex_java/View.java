@@ -19,17 +19,21 @@ public class View extends JFrame {
         add(dp);
     }
 
-    void setDisplay(BufferedImage targetDisplay) {
+    void setDisplayImage(BufferedImage targetDisplay) {
         dp.setDisplay(targetDisplay);
         repaint();
         setVisible(true);
+    }
+
+    DisplayPanel getDisplayPanel() {
+        return dp;
     }
 
 }
 
 class DisplayPanel extends JPanel {
 
-    Graphics2D displayPanelGraphicsObject, displayImageGraphicsObject;
+   public  Graphics2D displayPanelGraphicsObject, displayImageGraphicsObject;
     BufferedImage displayImage;
 
     public DisplayPanel() {
@@ -40,6 +44,8 @@ class DisplayPanel extends JPanel {
     public void paintComponent(Graphics g) {
         displayPanelGraphicsObject = (Graphics2D) g;
         super.paintComponent(displayPanelGraphicsObject);
+        displayPanelGraphicsObject.setColor(Color.black);
+        displayPanelGraphicsObject.fillRect(0,0,getWidth(),getHeight());
         displayPanelGraphicsObject.drawImage(displayImage, 0, 0, displayImage.getWidth(), displayImage.getHeight(), 0, 0, getWidth(),
                 getHeight(), this);
     }
