@@ -12,7 +12,8 @@ public class Control implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("Pressed" +e.getKeyChar());
+        
+        World.WorldChanged();
     }
 
     @Override

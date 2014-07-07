@@ -24,7 +24,7 @@ public class Cortex_Client {
         vw.getDisplayPanel().requestFocusInWindow();
         vw.getDisplayPanel().addKeyListener(control);
         
-        
+       
         
     }
 }
