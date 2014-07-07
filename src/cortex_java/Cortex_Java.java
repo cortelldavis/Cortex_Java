@@ -12,11 +12,14 @@ package cortex_java;
  */
 public class Cortex_Java {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
+   public static void main(String args[]) {
+
+		View vw = new View();
+
+		boolean running = true;
+		while (running) {
+			vw.setDisplay(ResourceLoader.getImage("img.png"));			
+			running = false;
+		}
+	}
 }
