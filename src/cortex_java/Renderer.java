@@ -51,7 +51,8 @@ public class Renderer implements WorldListener {
   
       worldObject.getPosition();
       worldObject.getSize();
-      worldObject.isCollidable();
+      //worldObject.isCollidable();
+      worldObject.getTexture();
       
   }
 

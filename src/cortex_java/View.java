@@ -11,6 +11,7 @@ public class View extends JFrame {
     DisplayPanel dp;
 
     public View() {
+        setTitle("Cortex Game Client");
         setBounds(400, 100, 800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);

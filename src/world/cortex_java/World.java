@@ -13,19 +13,32 @@ import java.util.ArrayList;
  */
 public class World {
 
-    ArrayList<WorldListener> listeners;
+    ArrayList<WorldListener> worldListeners;
+    ArrayList<WorldObject> worldObjects;
 
     public World() {
-        listeners = new ArrayList<WorldListener>();
+        worldListeners = new ArrayList<WorldListener>();
+        worldObjects = new ArrayList<WorldObject>();
     }
 
     public void addWorldListener(WorldListener wl) {
-        listeners.add(wl);
+        worldListeners.add(wl);
     }
 
-    public void worldChanged() {
-       
-        for(WorldListener listener:listeners)
-        listener.onWorldEvent(new WorldEvent());
+    public void worldHasChanged() {
+
+        for (WorldListener listener : worldListeners) {
+            listener.onWorldEvent(new WorldEvent());
+        }
+    }
+
+    public void createWorldObject() {
+
+        worldObjects.add(new WorldObject());
+
+    }
+
+    public WorldObject getWorldObject() {
+        return worldObjects.get(0);
     }
 }
