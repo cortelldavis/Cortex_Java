@@ -8,9 +8,7 @@ package cortex_java;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import world.cortex_java.World;
-import world.cortex_java.WorldEvent;
-import world.cortex_java.WorldListener;
+import world.cortex_java.*;
 
 /**
  *
@@ -40,7 +38,7 @@ public class Renderer implements WorldListener {
     @Override
     public void onWorldEvent(WorldEvent e) {
 
-        System.out.println("Render has detected a change in the world");
+        System.out.println("Renderer has detected a change in the world");
     }
 
     @Override
@@ -49,6 +47,12 @@ public class Renderer implements WorldListener {
         world.addWorldListener(this);
     }
 
+  void renderWorldObject(WorldObject worldObject){
   
+      worldObject.getPosition();
+      worldObject.getSize();
+      worldObject.isCollidable();
+      
+  }
 
 }
