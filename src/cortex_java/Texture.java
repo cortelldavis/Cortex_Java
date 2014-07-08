@@ -24,4 +24,8 @@ public class Texture {
         this.y2 = y2;
         this.x2 = x2;
     }
+
+    String getFileName() {
+        return textureAddress;
+    }
 }

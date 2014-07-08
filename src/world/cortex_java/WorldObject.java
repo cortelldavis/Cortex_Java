@@ -71,12 +71,20 @@ public class WorldObject {
         size = arg;
     }
 
+    public void setSize(int i, int i0, int i1, int i2) {
+        size.setBounds(new Rectangle(i, i0, i1, i2));
+    }
+
     public void setWidth(int w) {
         size.setSize(w, (int) size.getHeight());
     }
 
     public void setHeight(int h) {
         size.setSize((int) size.getWidth(), h);
+    }
+
+    public void setPosition(int i, int i0) {
+        position.setLocation(i, i0);
     }
 
     public void setPosition(Point p) {
@@ -95,4 +103,5 @@ public class WorldObject {
         texture.setTextureAddress(filename);
         texture.setTextureSource(y1, x1, y2, x2);
     }
+
 }

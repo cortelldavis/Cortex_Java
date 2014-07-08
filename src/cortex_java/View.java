@@ -19,11 +19,16 @@ public class View extends JFrame {
         dp = new DisplayPanel();
         add(dp);
         setLayout(null);
-        dp.setBounds(0,0,800,600);
+        dp.setBounds(0, 0, 800, 600);
     }
 
     void setDisplayImage(BufferedImage targetDisplay) {
         dp.setDisplay(targetDisplay);
+        repaint();
+        setVisible(true);
+    }
+
+    void updateDisplay() {
         repaint();
         setVisible(true);
     }

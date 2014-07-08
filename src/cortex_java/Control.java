@@ -6,6 +6,11 @@ import javax.swing.JComponent;
 public class Control implements KeyListener {
 
     private boolean keyPressed = false;
+    Direction direction;
+
+    public Control() {
+
+    }
 
     public boolean isKeyPressed() {
         return keyPressed;
@@ -24,11 +29,23 @@ public class Control implements KeyListener {
     public void keyPressed(KeyEvent e) {
         setKeyPressed(true);
 
+        switch (e.getKeyCode()) {
+
+            case KeyEvent.VK_UP:
+                direction = Direction.UP;
+                break;
+
+        }
+
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
 
+    }
+
+    Direction getDirection() {
+        return direction;
     }
 
 }

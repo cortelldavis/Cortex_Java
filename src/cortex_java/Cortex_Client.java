@@ -14,15 +14,15 @@ import world.cortex_java.World;
  * @author agent
  */
 public class Cortex_Client {
-    
+
     private static boolean running = true;
-    
+
     public static void main(String args[]) throws InterruptedException {
         Renderer r = new Renderer();
         View vw = new View();
         vw.setDisplayImage(r.renderAndGetNewScene());
         World world = new World();
-        
+
         Control control = new Control();
         System.out.println("no keys pressed");
 
@@ -33,18 +33,21 @@ public class Cortex_Client {
 
         //add world listener to the renderer
         r.listenToWorld(world);
-        
+
         world.createWorldObject();
         r.renderWorldObject(world.getWorldObject());
+        vw.updateDisplay();
         while (running) {
-            
+
             if (control.isKeyPressed()) {
-                
+                world.moveWorldObject(control.getDirection());
+                r.renderWorldObject(world.getWorldObject());
+                vw.updateDisplay();
                 world.worldHasChanged();
                 control.setKeyPressed(false);
             }
-            Thread.sleep(1000);
+            Thread.sleep(300);
         }
-        
+
     }
 }

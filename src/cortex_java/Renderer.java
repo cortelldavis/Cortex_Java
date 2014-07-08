@@ -27,7 +27,7 @@ public class Renderer implements WorldListener {
         active_GO = (Graphics2D) activeImage.getGraphics();
         active_GO.setColor(Color.white);
         active_GO.fillRect(0, 0, activeImage.getWidth(), activeImage.getHeight());
-        active_GO.drawImage(ResourceLoader.getImage("img.png"), 0, 0, 32, 32, 0, 0, 32, 32, null);
+        //active_GO.drawImage(ResourceLoader.getImage("img.png"), 0, 0, 32, 32, 0, 0, 32, 32, null);
         static_GO.setColor(Color.black);
         static_GO.fillRect(0, 0, 800, 600);
         static_GO.drawImage(activeImage, 0, 0, null);
@@ -47,13 +47,16 @@ public class Renderer implements WorldListener {
         world.addWorldListener(this);
     }
 
-  void renderWorldObject(WorldObject worldObject){
-  
-      worldObject.getPosition();
-      worldObject.getSize();
-      //worldObject.isCollidable();
-      worldObject.getTexture();
-      
-  }
+    void renderWorldObject(WorldObject worldObject) {
+
+        worldObject.getPosition();
+        worldObject.getSize();
+        //worldObject.isCollidable();
+        worldObject.getTexture();
+        active_GO.setColor(Color.black);
+        active_GO.fillRect(0, 0, activeImage.getWidth(), activeImage.getHeight());
+        active_GO.drawImage(ResourceLoader.getImage(worldObject.getTexture().getFileName()), worldObject.getXPosition(), worldObject.getYPosition(), (int) (worldObject.getXPosition() + worldObject.getWidth()), (int) (worldObject.getYPosition() + worldObject.getHeight()), worldObject.getTexture().x1, worldObject.getTexture().y1, worldObject.getTexture().x2, worldObject.getTexture().y2, null);
+        static_GO.drawImage(activeImage, 0, 0, null);
+    }
 
 }
