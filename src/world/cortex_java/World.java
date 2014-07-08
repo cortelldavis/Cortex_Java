@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cortex_java;
+package world.cortex_java;
 
 /**
  *
@@ -13,11 +13,11 @@ public class World {
 
     WorldListener listener;
 
-    void addWorldListener(WorldListener wl) {
+    public void addWorldListener(WorldListener wl) {
         listener = wl;
     }
 
-    void worldChanged() {
+    public void worldChanged() {
         listener.onWorldEvent(new WorldEvent());
     }
 }

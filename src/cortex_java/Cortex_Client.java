@@ -7,6 +7,7 @@ package cortex_java;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import world.cortex_java.World;
 
 /**
  *

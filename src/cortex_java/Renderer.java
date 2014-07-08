@@ -8,6 +8,9 @@ package cortex_java;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import world.cortex_java.World;
+import world.cortex_java.WorldEvent;
+import world.cortex_java.WorldListener;
 
 /**
  *
@@ -45,5 +48,7 @@ public class Renderer implements WorldListener {
 
         world.addWorldListener(this);
     }
+
+  
 
 }

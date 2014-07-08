@@ -8,7 +8,7 @@
  *
  * @author agent
  */
-package cortex_java;
+package world.cortex_java;
 
 public interface WorldListener {
     public void onWorldEvent(WorldEvent e);
