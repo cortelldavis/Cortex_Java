@@ -49,6 +49,7 @@ public class World {
     }
 
     public void moveWorldObject(Direction dir) {
+        worldHasChanged();
         //left x-size
         //right x+size
         //up 

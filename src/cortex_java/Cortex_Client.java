@@ -43,10 +43,9 @@ public class Cortex_Client {
                 world.moveWorldObject(control.getDirection());
                 r.renderWorldObject(world.getWorldObject());
                 vw.updateDisplay();
-                world.worldHasChanged();
                 control.setKeyPressed(false);
             }
-            Thread.sleep(300);
+            Thread.sleep(30);
         }
 
     }
