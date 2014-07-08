@@ -11,5 +11,5 @@ package cortex_java;
  * @author agent
  */
 public class WorldEvent {
-    
+    final int WorldObjectMovedEvent = 1;
 }

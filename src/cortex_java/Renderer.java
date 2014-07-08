@@ -38,11 +38,7 @@ public class Renderer implements WorldListener {
         return staticImage;
     }
 
-    void render() {
-        active_GO.setColor(Color.black);
-        active_GO.fillRect(0, 0, activeImage.getWidth(), activeImage.getHeight());
-
-    }
+    
 
     @Override
     public void OnWorldEvent(WorldEvent e) {
