@@ -18,10 +18,6 @@ public class Renderer implements WorldListener {
     BufferedImage activeImage, staticImage;
     Graphics2D active_GO, static_GO;
 
-    public Renderer() {
-        addWorldListener(this);
-    }
-
     BufferedImage renderAndGetNewScene() {
         staticImage = new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB);
         static_GO = staticImage.createGraphics();
@@ -38,17 +34,16 @@ public class Renderer implements WorldListener {
         return staticImage;
     }
 
-    
-
     @Override
-    public void OnWorldEvent(WorldEvent e) {
+    public void onWorldEvent(WorldEvent e) {
 
-    System.out.println("Something has happened in the world");
+        System.out.println("Render has detected a change in the world");
     }
 
-    static private void addWorldListener(WorldListener wl) {
+    @Override
+    public void listenToWorld(World world) {
 
-        World.addWorldListener(wl);
+        world.addWorldListener(this);
     }
 
 }

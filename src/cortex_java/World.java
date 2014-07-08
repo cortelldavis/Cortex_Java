@@ -10,14 +10,14 @@ package cortex_java;
  * @author agent
  */
 public class World {
-    
-   static  WorldListener listener;
-    
-    static void addWorldListener(WorldListener wl) {
+
+    WorldListener listener;
+
+    void addWorldListener(WorldListener wl) {
         listener = wl;
     }
-    
-    static void WorldChanged() {
-        listener.OnWorldEvent(new WorldEvent());
+
+    void worldChanged() {
+        listener.onWorldEvent(new WorldEvent());
     }
 }

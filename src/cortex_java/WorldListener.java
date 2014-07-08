@@ -11,6 +11,7 @@
 package cortex_java;
 
 public interface WorldListener {
-    public void OnWorldEvent(WorldEvent e);
+    public void onWorldEvent(WorldEvent e);
+    public void listenToWorld(World world);
     
 }
