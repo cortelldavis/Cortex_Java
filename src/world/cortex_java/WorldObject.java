@@ -6,8 +6,7 @@
 package world.cortex_java;
 
 import cortex_java.Texture;
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 
 /**
  *
@@ -24,12 +23,16 @@ public class WorldObject {
     //texture stores a filename and the x1,x2,y1,y2 source information about a bitmap that represents the world object 
     Texture texture;
 
-    public boolean isCollidable() {
-        return collidable;
+    public WorldObject() {
+        //contructor initialises all of the properties of the world object
+        position = new Point();
+        size = new Rectangle();
+        collidable = false;
+        texture = new Texture();
     }
 
-    public void setCollidable(boolean arg) {
-        collidable = arg;
+    public boolean isCollidable() {
+        return collidable;
     }
 
     public Rectangle getSize() {
@@ -56,34 +59,40 @@ public class WorldObject {
         return position.y;
     }
 
-    public Rectangle setSize() {
-        return size;
-    }
-
-    public double setWidth() {
-        return size.getWidth();
-    }
-
-    public double setHeight() {
-        return size.getHeight();
-    }
-
-    public Point setPosition() {
-        return position;
-    }
-
-    public int setXPosition() {
-        return position.x;
-    }
-
-    public int setYPosition() {
-        return position.y;
-    }
-
     public Texture getTexture() {
         return texture;
     }
 
-    public void setTexture() {
+    public void setCollidable(boolean arg) {
+        collidable = arg;
+    }
+
+    public void setSize(Rectangle arg) {
+        size = arg;
+    }
+
+    public void setWidth(int w) {
+        size.setSize(w, (int) size.getHeight());
+    }
+
+    public void setHeight(int h) {
+        size.setSize((int) size.getWidth(), h);
+    }
+
+    public void setPosition(Point p) {
+        position = p;
+    }
+
+    public void setXPosition(int x) {
+        position.setLocation(x, position.getY());
+    }
+
+    public void setYPosition(int y) {
+        position.setLocation(position.getX(), y);
+    }
+
+    public void setTexture(String filename, int y1, int x1, int y2, int x2) {
+        texture.setTextureAddress(filename);
+        texture.setTextureSource(y1, x1, y2, x2);
     }
 }
