@@ -5,19 +5,27 @@
  */
 package world.cortex_java;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author agent
  */
 public class World {
 
-    WorldListener listener;
+    ArrayList<WorldListener> listeners;
+
+    public World() {
+        listeners = new ArrayList<WorldListener>();
+    }
 
     public void addWorldListener(WorldListener wl) {
-        listener = wl;
+        listeners.add(wl);
     }
 
     public void worldChanged() {
+       
+        for(WorldListener listener:listeners)
         listener.onWorldEvent(new WorldEvent());
     }
 }
