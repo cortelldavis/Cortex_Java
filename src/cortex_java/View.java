@@ -5,7 +5,10 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import javax.swing.*;
-
+/**
+ *
+ * @author cortell davis
+ */
 public class View extends JFrame {
 
     DisplayPanel dp;

@@ -8,7 +8,7 @@ package world;
 
 /**
  *
- * @author agent
+ * @author cortell davis
  */
 public class WorldEvent {
     final int WorldObjectMovedEvent = 1;

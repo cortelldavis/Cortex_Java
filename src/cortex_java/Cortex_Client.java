@@ -12,7 +12,7 @@ import world.World;
 
 /**
  *
- * @author agent
+ * @author cortell davis
  */
 public class Cortex_Client {
 
@@ -21,7 +21,7 @@ public class Cortex_Client {
     public static void main(String args[]) throws InterruptedException {
         Renderer r = new Renderer();
         View vw = new View();
-        vw.setDisplayImage(r.renderAndGetNewScene());
+        vw.setDisplayImage(r.getCompositeRender());
         World world = new World();
 
         Controller control = new Controller();
@@ -33,11 +33,10 @@ public class Cortex_Client {
         vw.getDisplayPanel().addKeyListener(control);
 
         //add world listener to the renderer
-        r.listenToWorld(world);
+        r.setWorld(world);
 
         world.createWorldObject();
-        r.renderWorldObject(world.getWorldObject());
-        vw.updateDisplay();
+
         while (running) {
 
             if (control.isKeyPressed()) {
@@ -56,11 +55,8 @@ public class Cortex_Client {
                 }
 
                 world.moveWorldObject();
-                
-                r.renderWorldObject(world.getWorldObject());
-                
                 vw.updateDisplay();
-                
+
                 control.setKeyPressed(false);
             }
             Thread.sleep(30);

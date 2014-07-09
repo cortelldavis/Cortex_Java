@@ -1,12 +1,15 @@
 package cortex_java;
 
 import java.awt.event.*;
-import javax.swing.JComponent;
 
+/**
+ *
+ * @author cortell davis
+ */
 public class Controller implements KeyListener {
 
     private boolean keyPressed = false;
-    
+
     Command command;
 
     public Controller() {

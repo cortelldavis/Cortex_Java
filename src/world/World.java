@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author agent
+ * @author cortell davis
  */
 public class World {
 
@@ -33,14 +33,20 @@ public class World {
         }
     }
 
+    public void createWorld() {
+        System.out.println("World: new world has been created");
+        worldHasChanged();
+    }
+
     public void createWorldObject() {
 
         WorldObject worldObject = new WorldObject();
         worldObject.setSize(0, 0, 32, 32);
         worldObject.setPosition(100, 100);
-        worldObject.setTexture("../res/images/spritesheet_1.png", 0, 0, 32, 32);
+        worldObject.setTexture("../res/images/spritesheet_1.png", 0, 0, 96, 128, 0, 0, 32, 32);
         worldObject.setCollidable(true);
         worldObjects.add(worldObject);
+        worldHasChanged();
 
     }
 

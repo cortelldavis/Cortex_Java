@@ -11,7 +11,7 @@ import java.awt.*;
 
 /**
  *
- * @author agent
+ * @author cortell davis
  */
 public class WorldObject {
 
@@ -106,9 +106,10 @@ public class WorldObject {
         position.setLocation(position.getX(), y);
     }
 
-    public void setTexture(String filename, int y1, int x1, int y2, int x2) {
+    public void setTexture(String filename, int source_x1, int source_y1, int source_x2, int source_y2, int frame_x1, int frame_y1, int frame_x2, int frame_y2) {
         texture.setTextureAddress(filename);
-        texture.setTextureSource(y1, x1, y2, x2);
+        texture.setTextureSource(source_x1, source_y1, source_x2, source_y2);
+        texture.setTextureFrame(frame_x1, frame_y1, frame_x2, frame_y2);
     }
 
     public void setDirection(Direction dir) {

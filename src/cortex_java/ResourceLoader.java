@@ -4,7 +4,10 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
-
+/**
+ *
+ * @author cortell davis
+ */
 public class ResourceLoader {
 
 	static ResourceLoader rl = new ResourceLoader();

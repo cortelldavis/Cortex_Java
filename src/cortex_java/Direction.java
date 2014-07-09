@@ -7,7 +7,7 @@ package cortex_java;
 
 /**
  *
- * @author agent
+ * @author cortell davis
  */
 public enum Direction {
 

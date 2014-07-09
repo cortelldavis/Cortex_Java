@@ -15,32 +15,27 @@ import java.awt.image.BufferedImage;
 
 /**
  *
- * @author agent
+ * @author cortell davis
  */
 public class Renderer implements WorldListener {
 
     BufferedImage activeImage, staticImage;
     Graphics2D active_GO, static_GO;
+    World world;
 
-    BufferedImage renderAndGetNewScene() {
-        staticImage = new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB);
-        static_GO = staticImage.createGraphics();
+    BufferedImage worldLayer;
 
-        activeImage = ResourceLoader.getImage("../res/images/spritesheet_1.png");
-        active_GO = (Graphics2D) activeImage.getGraphics();
-        active_GO.setColor(Color.white);
-        active_GO.fillRect(0, 0, activeImage.getWidth(), activeImage.getHeight());
-        static_GO.setColor(Color.black);
-        static_GO.fillRect(0, 0, 800, 600);
-        static_GO.drawImage(activeImage, 0, 0, null);
+    public Renderer() {
 
-        return staticImage;
+        
+        
     }
 
     @Override
     public void onWorldEvent(WorldEvent e) {
 
         System.out.println("Renderer has detected a change in the world");
+        render();
     }
 
     @Override
@@ -51,14 +46,28 @@ public class Renderer implements WorldListener {
 
     void renderWorldObject(WorldObject worldObject) {
 
-        worldObject.getPosition();
-        worldObject.getSize();
+        //worldObject.getPosition();
+        //worldObject.getSize();
         //worldObject.isCollidable();
         worldObject.getTexture();
         active_GO.setColor(Color.black);
         active_GO.fillRect(0, 0, activeImage.getWidth(), activeImage.getHeight());
-        active_GO.drawImage(ResourceLoader.getImage(worldObject.getTexture().getFileName()), worldObject.getXPosition(), worldObject.getYPosition(), (int) (worldObject.getXPosition() + worldObject.getWidth()), (int) (worldObject.getYPosition() + worldObject.getHeight()), worldObject.getTexture().x1, worldObject.getTexture().y1, worldObject.getTexture().x2, worldObject.getTexture().y2, null);
+        active_GO.drawImage(ResourceLoader.getImage(worldObject.getTexture().getTextureAddress()), worldObject.getXPosition(), worldObject.getYPosition(), (int) (worldObject.getXPosition() + worldObject.getWidth()), (int) (worldObject.getYPosition() + worldObject.getHeight()), worldObject.getTexture().textureSource_x1, worldObject.getTexture().textureSource_y1, worldObject.getTexture().textureSource_x2, worldObject.getTexture().textureSource_y2, null);
         static_GO.drawImage(activeImage, 0, 0, null);
+    }
+
+    public BufferedImage getCompositeRender() {
+        return new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB);
+    }
+
+    void setWorld(World target) {
+        world = target;
+        listenToWorld(world);
+    }
+
+    void render() {
+
+        renderWorldObject(world.getWorldObject());
     }
 
 }
