@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package world.cortex_java;
+package world;
 
+import cortex_java.Direction;
 import cortex_java.Texture;
 import java.awt.*;
 
@@ -22,6 +23,8 @@ public class WorldObject {
     boolean collidable;
     //texture stores a filename and the x1,x2,y1,y2 source information about a bitmap that represents the world object 
     Texture texture;
+    //direction stores where an world object is facing in a north,west,south, or east format
+    Direction direction;
 
     public WorldObject() {
         //contructor initialises all of the properties of the world object
@@ -63,6 +66,10 @@ public class WorldObject {
         return texture;
     }
 
+    public Direction getDirection() {
+        return direction;
+    }
+
     public void setCollidable(boolean arg) {
         collidable = arg;
     }
@@ -102,6 +109,10 @@ public class WorldObject {
     public void setTexture(String filename, int y1, int x1, int y2, int x2) {
         texture.setTextureAddress(filename);
         texture.setTextureSource(y1, x1, y2, x2);
+    }
+
+    public void setDirection(Direction dir) {
+        direction = dir;
     }
 
 }

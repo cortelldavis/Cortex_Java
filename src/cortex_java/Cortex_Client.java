@@ -5,9 +5,10 @@
  */
 package cortex_java;
 
+import cortex_java.Controller.Command;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import world.cortex_java.World;
+import world.World;
 
 /**
  *
@@ -23,7 +24,7 @@ public class Cortex_Client {
         vw.setDisplayImage(r.renderAndGetNewScene());
         World world = new World();
 
-        Control control = new Control();
+        Controller control = new Controller();
         System.out.println("no keys pressed");
 
         //if key has been pressed, print the key that was pressed
@@ -40,9 +41,26 @@ public class Cortex_Client {
         while (running) {
 
             if (control.isKeyPressed()) {
-                world.moveWorldObject(control.getDirection());
+
+                if (control.getCommand() == Command.UP) {
+                    world.getWorldObject().setDirection(Direction.NORTH);
+                }
+                if (control.getCommand() == Command.LEFT) {
+                    world.getWorldObject().setDirection(Direction.WEST);
+                }
+                if (control.getCommand() == Command.DOWN) {
+                    world.getWorldObject().setDirection(Direction.SOUTH);
+                }
+                if (control.getCommand() == Command.RIGHT) {
+                    world.getWorldObject().setDirection(Direction.EAST);
+                }
+
+                world.moveWorldObject();
+                
                 r.renderWorldObject(world.getWorldObject());
+                
                 vw.updateDisplay();
+                
                 control.setKeyPressed(false);
             }
             Thread.sleep(30);

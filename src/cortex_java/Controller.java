@@ -3,12 +3,13 @@ package cortex_java;
 import java.awt.event.*;
 import javax.swing.JComponent;
 
-public class Control implements KeyListener {
+public class Controller implements KeyListener {
 
     private boolean keyPressed = false;
-    Direction direction;
+    
+    Command command;
 
-    public Control() {
+    public Controller() {
 
     }
 
@@ -32,16 +33,16 @@ public class Control implements KeyListener {
         switch (e.getKeyCode()) {
 
             case KeyEvent.VK_UP:
-                direction = Direction.UP;
+                command = Command.UP;
                 break;
             case KeyEvent.VK_LEFT:
-                direction = Direction.LEFT;
+                command = Command.LEFT;
                 break;
             case KeyEvent.VK_DOWN:
-                direction = Direction.DOWN;
+                command = Command.DOWN;
                 break;
             case KeyEvent.VK_RIGHT:
-                direction = Direction.RIGHT;
+                command = Command.RIGHT;
                 break;
 
         }
@@ -53,8 +54,12 @@ public class Control implements KeyListener {
 
     }
 
-    Direction getDirection() {
-        return direction;
+    Command getCommand() {
+        return command;
     }
 
+    enum Command {
+
+        LEFT, RIGHT, UP, DOWN
+    }
 }

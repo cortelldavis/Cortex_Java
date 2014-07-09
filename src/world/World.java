@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package world.cortex_java;
+package world;
 
 import cortex_java.Direction;
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class World {
         WorldObject worldObject = new WorldObject();
         worldObject.setSize(0, 0, 32, 32);
         worldObject.setPosition(100, 100);
-        worldObject.setTexture("img.png", 0, 0, 32, 32);
+        worldObject.setTexture("../res/images/spritesheet_1.png", 0, 0, 32, 32);
         worldObject.setCollidable(true);
         worldObjects.add(worldObject);
 
@@ -48,23 +48,24 @@ public class World {
         return worldObjects.get(0);
     }
 
-    public void moveWorldObject(Direction dir) {
+    public void moveWorldObject() {
         worldHasChanged();
         //left x-size
         //right x+size
         //up 
+        Direction dir = worldObjects.get(0).getDirection();
 
         switch (dir) {
-            case UP:
+            case NORTH:
                 worldObjects.get(0).setPosition((int) (worldObjects.get(0).getXPosition()), (int) (worldObjects.get(0).getYPosition() - worldObjects.get(0).getHeight()));
                 break;
-            case DOWN:
+            case SOUTH:
                 worldObjects.get(0).setPosition((int) (worldObjects.get(0).getXPosition()), (int) (worldObjects.get(0).getYPosition() + worldObjects.get(0).getHeight()));
                 break;
-            case LEFT:
+            case WEST:
                 worldObjects.get(0).setPosition((int) (worldObjects.get(0).getXPosition() - worldObjects.get(0).getWidth()), (int) (worldObjects.get(0).getYPosition()));
                 break;
-            case RIGHT:
+            case EAST:
                 worldObjects.get(0).setPosition((int) (worldObjects.get(0).getXPosition() + worldObjects.get(0).getWidth()), (int) (worldObjects.get(0).getYPosition()));
                 break;
         }

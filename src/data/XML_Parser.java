@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package data.cortex_java;
+package data;
 
 /**
  *
  * @author agent
  */
-public class xml_data {
+public class XML_Parser {
     
 }

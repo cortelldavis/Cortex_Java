@@ -11,5 +11,5 @@ package cortex_java;
  */
 public enum Direction {
 
-    LEFT, RIGHT, UP, DOWN
+    EAST, WEST, NORTH, SOUTH
 }
