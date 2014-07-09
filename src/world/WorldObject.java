@@ -112,6 +112,10 @@ public class WorldObject {
         texture.setTextureFrame(frame_x1, frame_y1, frame_x2, frame_y2);
     }
 
+    public void setTextureFrame(int x1, int y1, int x2, int y2) {
+        texture.setTextureFrame(x1, y1, x2, y2);
+    }
+
     public void setDirection(Direction dir) {
         direction = dir;
     }

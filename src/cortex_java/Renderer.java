@@ -51,27 +51,13 @@ public class Renderer implements WorldListener {
     public void onWorldEvent(WorldEvent e) {
 
         System.out.println("Renderer has detected a change in the world");
-        render();
+        render(world);
     }
 
     @Override
     public void listenToWorld(World world) {
 
         world.addWorldListener(this);
-    }
-
-    void renderWorldObject(WorldObject worldObject) {
-        /*
-         //worldObject.getPosition();
-         //worldObject.getSize();
-         //worldObject.isCollidable();
-         worldObject.getTexture();
-         active_GO.setColor(Color.black);
-         active_GO.fillRect(0, 0, activeImage.getWidth(), activeImage.getHeight());
-         active_GO.drawImage(ResourceLoader.getImage(worldObject.getTexture().getTextureAddress()), worldObject.getXPosition(), worldObject.getYPosition(), (int) (worldObject.getXPosition() + worldObject.getWidth()), (int) (worldObject.getYPosition() + worldObject.getHeight()), worldObject.getTexture().textureSource_x1, worldObject.getTexture().textureSource_y1, worldObject.getTexture().textureSource_x2, worldObject.getTexture().textureSource_y2, null);
-         static_GO.drawImage(activeImage, 0, 0, null);
-         */
-
     }
 
     public BufferedImage getCompositeRender() {
@@ -81,20 +67,18 @@ public class Renderer implements WorldListener {
     void setWorld(World target) {
         world = target;
         listenToWorld(world);
-        render(world);
-    }
 
-    void render() {
-
-        renderWorldObject(world.getWorldObject());
-    }
-
-    private void render(World world) {
         worldLayer[0] = ResourceLoader.getImage(world.getWorldObject().getTexture().getTextureAddress());
         worldLayer[0] = worldLayer[0].getSubimage(0, 0, 96, 128);
 
-        worldLayer[1] = worldLayer[0].getSubimage(0, 0, 32, 32);
-        compositeLayer.getGraphics().drawImage(worldLayer[1], 0, 0, null);
+        worldLayer[1] = worldLayer[0].getSubimage(world.getWorldObject().getTexture().getTextureFrame().x, world.getWorldObject().getTexture().getTextureFrame().y, world.getWorldObject().getTexture().getTextureFrame().width, world.getWorldObject().getTexture().getTextureFrame().height);
+        render(world);
+    }
+
+    private void render(World world) {
+        composite_GO.setColor(Color.black);
+        composite_GO.fillRect(0, 0, 800, 600);
+        composite_GO.drawImage(worldLayer[1], world.getWorldObject().getXPosition(), world.getWorldObject().getXPosition(), null);
     }
 
 }

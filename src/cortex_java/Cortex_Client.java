@@ -32,14 +32,14 @@ public class Cortex_Client implements Runnable {
         Controller control = new Controller();
         System.out.println("no keys pressed");
 
-        //if key has been pressed, print the key that was pressed
         vw.getDisplayPanel().setFocusable(true);
         vw.getDisplayPanel().requestFocusInWindow();
         vw.getDisplayPanel().addKeyListener(control);
-        world.createWorldObject();
-        //add world listener to the renderer
+
+        world.createWorld();
         r.setWorld(world);
         vw.updateDisplay();
+
         while (running) {
 
             if (control.isKeyPressed()) {
