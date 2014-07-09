@@ -14,15 +14,20 @@ import world.World;
  *
  * @author cortell davis
  */
-public class Cortex_Client {
+public class Cortex_Client implements Runnable {
 
     private static boolean running = true;
 
-    public static void main(String args[]) throws InterruptedException {
+    public static void main(String args[]) {
+        new Thread(new Cortex_Client(), "Cortex_Client").start();
+    }
+
+    @Override
+    public void run() {
+        World world = new World();
         Renderer r = new Renderer();
         View vw = new View();
         vw.setDisplayImage(r.getCompositeRender());
-        World world = new World();
 
         Controller control = new Controller();
         System.out.println("no keys pressed");
@@ -31,12 +36,10 @@ public class Cortex_Client {
         vw.getDisplayPanel().setFocusable(true);
         vw.getDisplayPanel().requestFocusInWindow();
         vw.getDisplayPanel().addKeyListener(control);
-
+        world.createWorldObject();
         //add world listener to the renderer
         r.setWorld(world);
-
-        world.createWorldObject();
-
+        vw.updateDisplay();
         while (running) {
 
             if (control.isKeyPressed()) {
@@ -59,8 +62,11 @@ public class Cortex_Client {
 
                 control.setKeyPressed(false);
             }
-            Thread.sleep(30);
+            try {
+                Thread.sleep(30);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Cortex_Client.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-
     }
 }
