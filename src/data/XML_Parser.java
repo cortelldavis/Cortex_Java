@@ -52,13 +52,13 @@ class XML_Handler extends DefaultHandler {
             String qName, Attributes attributes)
             throws SAXException {
 
-        System.out.println("start element: " + qName);
+        System.out.println("val: " + qName);
 
     }
 
     public void endElement(String uri, String localName, String qName)
             throws SAXException {
-        // System.out.println("end element: " + qName);
+        System.out.println("end element: " + qName);
     }
 
     public void characters(char ch[], int start, int length)
