@@ -90,8 +90,8 @@ public class WorldObject {
         size.setSize((int) size.getWidth(), h);
     }
 
-    public void setPosition(int i, int i0) {
-        position.setLocation(i, i0);
+    public void setPosition(int x, int y) {
+        position.setLocation(x, y);
     }
 
     public void setPosition(Point p) {

@@ -44,7 +44,7 @@ public class World {
 
         WorldObject worldObject = new WorldObject();
         worldObject.setSize(0, 0, 32, 32);
-        worldObject.setPosition(300, 300);
+        worldObject.setPosition(100, 100);
         worldObject.setTexture("../res/images/spritesheet_1.png", 0, 0, 96, 128, 0, 0, 32, 32);
         worldObject.setCollidable(true);
         worldObjects.add(worldObject);
@@ -65,23 +65,21 @@ public class World {
 
         switch (dir) {
             case NORTH:
-                //worldObjects.get(0).setPosition((int) (worldObjects.get(0).getXPosition()), (int) (worldObjects.get(0).getYPosition() - worldObjects.get(0).getHeight()));
-                // worldObjects.get(0).setPosition(0, 332);
-                // worldObjects.get(0).setTextureFrame(0, 32, 32, 64);
-                worldObjects.get(0).setPosition(300,200);
-              //  worldObjects.get(0).setPosition(132, 100);
+                worldObjects.get(0).setPosition((int) (worldObjects.get(0).getXPosition()), (int) (worldObjects.get(0).getYPosition() - worldObjects.get(0).getHeight()));
+                 worldObjects.get(0).setTextureFrame(0, 96, 32, 32);
+
                 break;
             case SOUTH:
-                //worldObjects.get(0).setPosition((int) (worldObjects.get(0).getXPosition()), (int) (worldObjects.get(0).getYPosition() + worldObjects.get(0).getHeight()));
-                // worldObjects.get(0).setTextureFrame(0, 0, 32, 32);
+                worldObjects.get(0).setPosition((int) (worldObjects.get(0).getXPosition()), (int) (worldObjects.get(0).getYPosition() + worldObjects.get(0).getHeight()));
+                 worldObjects.get(0).setTextureFrame(0, 0, 32, 32);
                 break;
             case WEST:
-                //worldObjects.get(0).setPosition((int) (worldObjects.get(0).getXPosition() - worldObjects.get(0).getWidth()), (int) (worldObjects.get(0).getYPosition()));
-                //  worldObjects.get(0).setTextureFrame(0, 0, 32, 32);
+                worldObjects.get(0).setPosition((int) (worldObjects.get(0).getXPosition() - worldObjects.get(0).getWidth()), (int) (worldObjects.get(0).getYPosition()));
+                  worldObjects.get(0).setTextureFrame(0, 32, 32, 32);
                 break;
             case EAST:
-                //worldObjects.get(0).setPosition((int) (worldObjects.get(0).getXPosition() + worldObjects.get(0).getWidth()), (int) (worldObjects.get(0).getYPosition()));
-                //  worldObjects.get(0).setTextureFrame(0, 0, 32, 32);
+                worldObjects.get(0).setPosition((int) (worldObjects.get(0).getXPosition() + worldObjects.get(0).getWidth()), (int) (worldObjects.get(0).getYPosition()));
+                  worldObjects.get(0).setTextureFrame(0, 64, 32, 32);
                 break;
         }
         worldHasChanged();
