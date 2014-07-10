@@ -25,6 +25,8 @@ public class WorldObject {
     Texture texture;
     //direction stores where an world object is facing in a north,west,south, or east format
     Direction direction;
+    //animated_state is used to keep track of world objects animated stated for animating it
+    int animated_state = 0;
 
     public WorldObject() {
         //contructor initialises all of the properties of the world object
@@ -32,6 +34,7 @@ public class WorldObject {
         size = new Rectangle();
         collidable = false;
         texture = new Texture();
+        animated_state = 1;
     }
 
     public boolean isCollidable() {
@@ -68,6 +71,10 @@ public class WorldObject {
 
     public Direction getDirection() {
         return direction;
+    }
+
+    public int getAnimated_state() {
+        return animated_state;
     }
 
     public void setCollidable(boolean arg) {
@@ -120,4 +127,11 @@ public class WorldObject {
         direction = dir;
     }
 
+    public void setAnimated_state(int animated_state) {
+        this.animated_state = animated_state;
+    }
+    
+    public void animate(){
+    
+    }
 }

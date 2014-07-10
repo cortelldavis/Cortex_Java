@@ -66,20 +66,88 @@ public class World {
         switch (dir) {
             case NORTH:
                 worldObjects.get(0).setPosition((int) (worldObjects.get(0).getXPosition()), (int) (worldObjects.get(0).getYPosition() - worldObjects.get(0).getHeight()));
-                 worldObjects.get(0).setTextureFrame(0, 96, 32, 32);
+
+                if (worldObjects.get(0).getAnimated_state() == 1) {
+                    worldObjects.get(0).setTextureFrame(0, 96, 32, 32);
+                    worldObjects.get(0).setAnimated_state(2);
+                    break;
+                }
+                if (worldObjects.get(0).getAnimated_state() == 2) {
+                    worldObjects.get(0).setTextureFrame(32, 96, 32, 32);
+                    worldObjects.get(0).setAnimated_state(3);
+                    break;
+                }
+                if (worldObjects.get(0).getAnimated_state() == 3) {
+                    worldObjects.get(0).setTextureFrame(64, 96, 32, 32);
+                    worldObjects.get(0).setAnimated_state(1);
+                    break;
+                }
 
                 break;
             case SOUTH:
                 worldObjects.get(0).setPosition((int) (worldObjects.get(0).getXPosition()), (int) (worldObjects.get(0).getYPosition() + worldObjects.get(0).getHeight()));
-                 worldObjects.get(0).setTextureFrame(0, 0, 32, 32);
+
+                if (worldObjects.get(0).getAnimated_state() == 1) {
+                    worldObjects.get(0).setTextureFrame(0, 0, 32, 32);
+                    worldObjects.get(0).setAnimated_state(2);
+                    break;
+                }
+                if (worldObjects.get(0).getAnimated_state() == 2) {
+                    worldObjects.get(0).setTextureFrame(32, 0, 32, 32);
+                    worldObjects.get(0).setAnimated_state(3);
+                    break;
+                }
+                if (worldObjects.get(0).getAnimated_state() == 3) {
+                    worldObjects.get(0).setTextureFrame(64, 0, 32, 32);
+                    worldObjects.get(0).setAnimated_state(1);
+                    break;
+                }
+
                 break;
             case WEST:
                 worldObjects.get(0).setPosition((int) (worldObjects.get(0).getXPosition() - worldObjects.get(0).getWidth()), (int) (worldObjects.get(0).getYPosition()));
-                  worldObjects.get(0).setTextureFrame(0, 32, 32, 32);
+
+                if (worldObjects.get(0).getAnimated_state() == 1) {
+                    worldObjects.get(0).setTextureFrame(0, 32, 32, 32);
+                    worldObjects.get(0).setAnimated_state(2);
+                    break;
+
+                }
+                if (worldObjects.get(0).getAnimated_state() == 2) {
+                    worldObjects.get(0).setTextureFrame(32, 32, 32, 32);
+                    worldObjects.get(0).setAnimated_state(3);
+                    break;
+
+                }
+                if (worldObjects.get(0).getAnimated_state() == 3) {
+                    worldObjects.get(0).setTextureFrame(64, 32, 32, 32);
+                    worldObjects.get(0).setAnimated_state(1);
+                    break;
+
+                }
+
                 break;
             case EAST:
                 worldObjects.get(0).setPosition((int) (worldObjects.get(0).getXPosition() + worldObjects.get(0).getWidth()), (int) (worldObjects.get(0).getYPosition()));
-                  worldObjects.get(0).setTextureFrame(0, 64, 32, 32);
+
+                if (worldObjects.get(0).getAnimated_state() == 1) {
+                    worldObjects.get(0).setTextureFrame(0, 64, 32, 32);
+                    worldObjects.get(0).setAnimated_state(2);
+                    break;
+
+                }
+                if (worldObjects.get(0).getAnimated_state() == 2) {
+                    worldObjects.get(0).setTextureFrame(32, 64, 32, 32);
+                    worldObjects.get(0).setAnimated_state(3);
+                    break;
+
+                }
+                if (worldObjects.get(0).getAnimated_state() == 3) {
+                    worldObjects.get(0).setTextureFrame(64, 64, 32, 32);
+                    worldObjects.get(0).setAnimated_state(1);
+                    break;
+
+                }
                 break;
         }
         worldHasChanged();
