@@ -134,7 +134,6 @@ public class WorldObject {
     public void animate() {
         switch (direction) {
             case NORTH:
-                setPosition((int) (getXPosition()), (int) (getYPosition() - getHeight()));
 
                 if (getAnimated_state() == 1) {
                     setTextureFrame(0, 96, 32, 32);
@@ -154,7 +153,6 @@ public class WorldObject {
 
                 break;
             case SOUTH:
-                setPosition((int) (getXPosition()), (int) (getYPosition() + getHeight()));
 
                 if (getAnimated_state() == 1) {
                     setTextureFrame(0, 0, 32, 32);
@@ -174,7 +172,6 @@ public class WorldObject {
 
                 break;
             case WEST:
-                setPosition((int) (getXPosition() - getWidth()), (int) (getYPosition()));
 
                 if (getAnimated_state() == 1) {
                     setTextureFrame(0, 32, 32, 32);
@@ -197,7 +194,6 @@ public class WorldObject {
 
                 break;
             case EAST:
-                setPosition((int) (getXPosition() + getWidth()), (int) (getYPosition()));
 
                 if (getAnimated_state() == 1) {
                     setTextureFrame(0, 64, 32, 32);
@@ -217,6 +213,32 @@ public class WorldObject {
                     break;
 
                 }
+                break;
+        }
+    }
+
+    public void move() {
+        switch (direction) {
+            case NORTH:
+                setPosition((int) (getXPosition()), (int) (getYPosition() - getHeight()));
+
+                animate();
+
+                break;
+            case SOUTH:
+                setPosition((int) (getXPosition()), (int) (getYPosition() + getHeight()));
+
+                animate();
+
+                break;
+            case WEST:
+                setPosition((int) (getXPosition() - getWidth()), (int) (getYPosition()));
+                animate();
+
+                break;
+            case EAST:
+                setPosition((int) (getXPosition() + getWidth()), (int) (getYPosition()));
+                animate();
                 break;
         }
 

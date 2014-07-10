@@ -58,12 +58,7 @@ public class World {
 
     public void moveWorldObject() {
 
-        //left x-size
-        //right x+size
-        //up 
-        Direction dir = worldObjects.get(0).getDirection();
-
-       worldObjects.get(0).animate();
+        worldObjects.get(0).move();
         worldHasChanged();
     }
 }
