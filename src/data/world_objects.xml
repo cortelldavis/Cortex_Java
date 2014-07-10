@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<world_objects>
+    <actors>
+        <npc id="1">
+            <name>Gregory</name>
+            <level>1</level>
+            <health>10</health>
+            <agility>10</agility>
+            <strength>10</strength>
+            <willpower>10</willpower>
+            <texture>
+                <texture_source>
+                    <y1>0</y1>
+                    <x1>0</x1>
+                    <y2>96</y2>
+                    <x2>128</x2>
+                </texture_source>
+                <texture_frame>
+                    <y1>0</y1>
+                    <x1>0</x1>
+                    <y2>32</y2>
+                    <x2>32</x2>
+                </texture_frame>
+                <texture_address>"../res/images/spritesheet_1.png"</texture_address>
+            </texture>
+            <collidable>true</collidable>
+            <size>
+                <y1>0</y1>
+                <x1>0</x1>
+                <y2>32</y2>
+                <x2>32</x2>
+            </size>
+        </npc>
+    </actors>
+</world_objects>
+

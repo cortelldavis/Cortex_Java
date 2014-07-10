@@ -22,4 +22,6 @@ public class ResourceLoader {
 		}
 		return null;
 	}
+        
+        //get resource - xml - actor - world object
 }

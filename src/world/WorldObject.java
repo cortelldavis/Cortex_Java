@@ -26,7 +26,9 @@ public class WorldObject {
     //direction stores where an world object is facing in a north,west,south, or east format
     Direction direction;
     //animated_state is used to keep track of world objects animated stated for animating it
-    int animated_state = 0;
+    int animated_state;
+    //id is a unique number that categorizes all world objects in the game
+    int id;
 
     public WorldObject() {
         //contructor initialises all of the properties of the world object
@@ -75,6 +77,10 @@ public class WorldObject {
 
     public int getAnimated_state() {
         return animated_state;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setCollidable(boolean arg) {
@@ -129,6 +135,10 @@ public class WorldObject {
 
     public void setAnimated_state(int animated_state) {
         this.animated_state = animated_state;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void animate() {

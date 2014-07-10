@@ -5,8 +5,6 @@
  */
 package world;
 
-import cortex_java.Direction;
-import java.awt.Point;
 import java.util.ArrayList;
 
 /**
@@ -43,10 +41,12 @@ public class World {
     public void createWorldObject() {
 
         WorldObject worldObject = new WorldObject();
+
         worldObject.setSize(0, 0, 32, 32);
         worldObject.setPosition(100, 100);
         worldObject.setTexture("../res/images/spritesheet_1.png", 0, 0, 96, 128, 0, 0, 32, 32);
         worldObject.setCollidable(true);
+
         worldObjects.add(worldObject);
         worldHasChanged();
 
@@ -54,6 +54,7 @@ public class World {
 
     public WorldObject getWorldObject() {
         return worldObjects.get(0);
+
     }
 
     public void moveWorldObject() {
@@ -61,4 +62,5 @@ public class World {
         worldObjects.get(0).move();
         worldHasChanged();
     }
+
 }

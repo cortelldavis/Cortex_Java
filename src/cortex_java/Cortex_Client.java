@@ -40,6 +40,8 @@ public class Cortex_Client implements Runnable {
         r.setWorld(world);
         vw.updateDisplay();
 
+        
+       
         while (running) {
 
             if (control.isKeyPressed()) {
