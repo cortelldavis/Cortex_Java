@@ -130,8 +130,95 @@ public class WorldObject {
     public void setAnimated_state(int animated_state) {
         this.animated_state = animated_state;
     }
-    
-    public void animate(){
-    
+
+    public void animate() {
+        switch (direction) {
+            case NORTH:
+                setPosition((int) (getXPosition()), (int) (getYPosition() - getHeight()));
+
+                if (getAnimated_state() == 1) {
+                    setTextureFrame(0, 96, 32, 32);
+                    setAnimated_state(2);
+                    break;
+                }
+                if (getAnimated_state() == 2) {
+                    setTextureFrame(32, 96, 32, 32);
+                    setAnimated_state(3);
+                    break;
+                }
+                if (getAnimated_state() == 3) {
+                    setTextureFrame(64, 96, 32, 32);
+                    setAnimated_state(1);
+                    break;
+                }
+
+                break;
+            case SOUTH:
+                setPosition((int) (getXPosition()), (int) (getYPosition() + getHeight()));
+
+                if (getAnimated_state() == 1) {
+                    setTextureFrame(0, 0, 32, 32);
+                    setAnimated_state(2);
+                    break;
+                }
+                if (getAnimated_state() == 2) {
+                    setTextureFrame(32, 0, 32, 32);
+                    setAnimated_state(3);
+                    break;
+                }
+                if (getAnimated_state() == 3) {
+                    setTextureFrame(64, 0, 32, 32);
+                    setAnimated_state(1);
+                    break;
+                }
+
+                break;
+            case WEST:
+                setPosition((int) (getXPosition() - getWidth()), (int) (getYPosition()));
+
+                if (getAnimated_state() == 1) {
+                    setTextureFrame(0, 32, 32, 32);
+                    setAnimated_state(2);
+                    break;
+
+                }
+                if (getAnimated_state() == 2) {
+                    setTextureFrame(32, 32, 32, 32);
+                    setAnimated_state(3);
+                    break;
+
+                }
+                if (getAnimated_state() == 3) {
+                    setTextureFrame(64, 32, 32, 32);
+                    setAnimated_state(1);
+                    break;
+
+                }
+
+                break;
+            case EAST:
+                setPosition((int) (getXPosition() + getWidth()), (int) (getYPosition()));
+
+                if (getAnimated_state() == 1) {
+                    setTextureFrame(0, 64, 32, 32);
+                    setAnimated_state(2);
+                    break;
+
+                }
+                if (getAnimated_state() == 2) {
+                    setTextureFrame(32, 64, 32, 32);
+                    setAnimated_state(3);
+                    break;
+
+                }
+                if (getAnimated_state() == 3) {
+                    setTextureFrame(64, 64, 32, 32);
+                    setAnimated_state(1);
+                    break;
+
+                }
+                break;
+        }
+
     }
 }
