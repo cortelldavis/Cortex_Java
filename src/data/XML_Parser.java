@@ -34,6 +34,7 @@ public class XML_Parser {
             saxParser.parse(xmlInput, handler);
 
         } catch (ParserConfigurationException | SAXException | IOException err) {
+            err.printStackTrace();
         }
     }
 }

@@ -5,6 +5,7 @@
  */
 package world;
 
+import cortex_java.ResourceLoader;
 import java.util.ArrayList;
 
 /**
@@ -34,19 +35,13 @@ public class World {
 
     public void createWorld() {
         System.out.println("World: new world has been created");
-        createWorldObject();
+        createWorldObject("World Object ID");
         worldHasChanged();
     }
 
-    public void createWorldObject() {
+    public void createWorldObject(String id) {
 
-        WorldObject worldObject = new WorldObject();
-
-        worldObject.setSize(0, 0, 32, 32);
-        worldObject.setPosition(100, 100);
-        worldObject.setTexture("../res/images/spritesheet_1.png", 0, 0, 96, 128, 0, 0, 32, 32);
-        worldObject.setCollidable(true);
-
+        WorldObject worldObject = ResourceLoader.getWorldObjectById(id);
         worldObjects.add(worldObject);
         worldHasChanged();
 
