@@ -1,6 +1,6 @@
 package cortex_java;
 
-import data.XML_Parser;
+import data.Actor_XML_Parser;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -14,7 +14,7 @@ import world.WorldObject;
 public class ResourceLoader {
 
     static ResourceLoader rl = new ResourceLoader();
-    static XML_Parser parser = new XML_Parser();
+    static Actor_XML_Parser parser = new Actor_XML_Parser();
 
     public static BufferedImage getImage(String filename) {
         URL url = rl.getClass().getResource("" + filename);
@@ -31,12 +31,14 @@ public class ResourceLoader {
         WorldObject worldObject = new WorldObject();
         parser.parse();
         //assignment value sshould be retrieved from XML files
-        worldObject.setSize(0, 0, 32, 32);
+        worldObject.setSize(Integer.parseInt(parser.getSize_x1()), Integer.parseInt(parser.getSize_y1()), Integer.parseInt(parser.getSize_x2()), Integer.parseInt(parser.getSize_y2()));
+
+        //objects location needs to be derived from a local map class
         worldObject.setPosition(100, 100);
-        worldObject.setTexture("../res/images/spritesheet_1.png", 0, 0, 96, 128, 0, 0, 32, 32);
-        worldObject.setCollidable(true);
-        
-        
+
+        worldObject.setTexture(parser.getTexture_address(), Integer.parseInt(parser.getTexture_source_x1()), Integer.parseInt(parser.getTexture_source_y1()), Integer.parseInt(parser.getTexture_source_x2()), Integer.parseInt(parser.getTexture_source_y2()), 0, 0, 32, 32);
+        worldObject.setCollidable(Boolean.parseBoolean(parser.getCollidable()));
+        parser = null;
         return worldObject;
     }
 }

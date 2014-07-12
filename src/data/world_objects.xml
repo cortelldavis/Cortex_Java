@@ -21,7 +21,7 @@
                     <texture_frame_x2>32</texture_frame_x2>
                     <texture_frame_y2>32</texture_frame_y2>
                 </texture_frame>
-                <texture_address>"../res/images/spritesheet_1.png"</texture_address>
+                <texture_address>../res/images/spritesheet_1.png</texture_address>
             </texture>
             <collidable>true</collidable>
             <size>
