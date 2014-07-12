@@ -14,7 +14,7 @@ import java.io.File;
  */
 public class XML_Parser {
 
-    public static void main(String argv[]) {
+    public void parse() {
 
         try {
 
@@ -33,11 +33,11 @@ public class XML_Parser {
 
                 Node nNode = nList.item(temp);
 
-                System.out.println("\nCurrent Element :" + nNode.getNodeName());
+                System.out.println("\t" + nNode.getNodeName());
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
                     Element eElement = (Element) nNode;
-
+                    System.out.println("\n------------------------------\n\tStats\n------------------------------");
                     System.out.println("id : " + eElement.getAttribute("id"));
                     System.out.println("name : " + eElement.getElementsByTagName("name").item(0).getTextContent());
                     System.out.println("level : " + eElement.getElementsByTagName("level").item(0).getTextContent());
@@ -45,11 +45,27 @@ public class XML_Parser {
                     System.out.println("agility : " + eElement.getElementsByTagName("agility").item(0).getTextContent());
                     System.out.println("strength : " + eElement.getElementsByTagName("strength").item(0).getTextContent());
                     System.out.println("willpower : " + eElement.getElementsByTagName("willpower").item(0).getTextContent());
-
+                    System.out.println("\n------------------------------\n\tProperties\n------------------------------");
+                    System.out.println("properties\n");
+                    System.out.println("texture address : " + eElement.getElementsByTagName("texture_address").item(0).getTextContent());
+                    System.out.println("texture_frame_y1 : " + eElement.getElementsByTagName("texture_frame_y1").item(0).getTextContent());
+                    System.out.println("texture_frame_x1 : " + eElement.getElementsByTagName("texture_frame_x1").item(0).getTextContent());
+                    System.out.println("texture_frame_y2 : " + eElement.getElementsByTagName("texture_frame_y2").item(0).getTextContent());
+                    System.out.println("texture_frame_y2 : " + eElement.getElementsByTagName("texture_frame_y2").item(0).getTextContent());
+                    System.out.println("texture_source_y1 : " + eElement.getElementsByTagName("texture_source_y1").item(0).getTextContent());
+                    System.out.println("texture_source_x1 : " + eElement.getElementsByTagName("texture_source_x1").item(0).getTextContent());
+                    System.out.println("texture_source_y2 : " + eElement.getElementsByTagName("texture_source_y2").item(0).getTextContent());
+                    System.out.println("texture_source_x2 : " + eElement.getElementsByTagName("texture_source_x2").item(0).getTextContent());
+                    System.out.println("collidable : " + eElement.getElementsByTagName("collidable").item(0).getTextContent());
+                    System.out.println("size_x1 : " + eElement.getElementsByTagName("size_x1").item(0).getTextContent());
+                    System.out.println("size_y1 : " + eElement.getElementsByTagName("size_y1").item(0).getTextContent());
+                    System.out.println("size_x2 : " + eElement.getElementsByTagName("size_x2").item(0).getTextContent());
+                    System.out.println("size_y2 : " + eElement.getElementsByTagName("size_y2").item(0).getTextContent());
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 }

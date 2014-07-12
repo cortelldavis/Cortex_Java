@@ -1,5 +1,6 @@
 package cortex_java;
 
+import data.XML_Parser;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -13,6 +14,7 @@ import world.WorldObject;
 public class ResourceLoader {
 
     static ResourceLoader rl = new ResourceLoader();
+    static XML_Parser parser = new XML_Parser();
 
     public static BufferedImage getImage(String filename) {
         URL url = rl.getClass().getResource("" + filename);
@@ -27,7 +29,7 @@ public class ResourceLoader {
 
     public static WorldObject getWorldObjectById(String id) {
         WorldObject worldObject = new WorldObject();
-        
+        parser.parse();
         //assignment value sshould be retrieved from XML files
         worldObject.setSize(0, 0, 32, 32);
         worldObject.setPosition(100, 100);
