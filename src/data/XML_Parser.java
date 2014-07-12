@@ -1,19 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package data;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.jar.Attributes;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Node;
+import org.w3c.dom.Element;
+import java.io.File;
 
 /**
  *
@@ -21,55 +14,42 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 public class XML_Parser {
 
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String argv[]) {
 
-        SAXParserFactory factory = SAXParserFactory.newInstance();
         try {
 
-            InputStream xmlInput = new FileInputStream("src/data/world_objects.xml");
-            SAXParser saxParser = factory.newSAXParser();
+            File fXmlFile = new File("src/data/world_objects.xml");
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(fXmlFile);
 
-            DefaultHandler handler = new XML_Handler();
-            saxParser.parse(xmlInput, handler);
+            doc.getDocumentElement().normalize();
 
-        } catch (ParserConfigurationException | SAXException | IOException err) {
-            err.printStackTrace();
+            System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+            NodeList nList = doc.getElementsByTagName("npc");
+
+            System.out.println("----------------------------");
+            for (int temp = 0; temp < nList.getLength(); temp++) {
+
+                Node nNode = nList.item(temp);
+
+                System.out.println("\nCurrent Element :" + nNode.getNodeName());
+                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                    Element eElement = (Element) nNode;
+
+                    System.out.println("id : " + eElement.getAttribute("id"));
+                    System.out.println("name : " + eElement.getElementsByTagName("name").item(0).getTextContent());
+                    System.out.println("level : " + eElement.getElementsByTagName("level").item(0).getTextContent());
+                    System.out.println("health : " + eElement.getElementsByTagName("health").item(0).getTextContent());
+                    System.out.println("agility : " + eElement.getElementsByTagName("agility").item(0).getTextContent());
+                    System.out.println("strength : " + eElement.getElementsByTagName("strength").item(0).getTextContent());
+                    System.out.println("willpower : " + eElement.getElementsByTagName("willpower").item(0).getTextContent());
+
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
-}
-
-class XML_Handler extends DefaultHandler {
-
-    public void startDocument() throws SAXException {
-        System.out.println("start document: ");
-    }
-
-    public void endDocument() throws SAXException {
-        System.out.println("end document: ");
-    }
-
-    public void startElement(String uri, String localName,
-            String qName, Attributes attributes)
-            throws SAXException {
-
-        System.out.println("val: " + qName);
-
-    }
-
-    public void endElement(String uri, String localName, String qName)
-            throws SAXException {
-        System.out.println("end element: " + qName);
-    }
-
-    public void characters(char ch[], int start, int length)
-            throws SAXException {
-        System.out.println("start characters: "
-                + new String(ch, start, length));
-    }
-
-    public void ignorableWhitespace(char ch[], int start, int length)
-            throws SAXException {
-    }
-
 }

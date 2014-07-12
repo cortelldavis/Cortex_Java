@@ -27,10 +27,14 @@ public class ResourceLoader {
 
     public static WorldObject getWorldObjectById(String id) {
         WorldObject worldObject = new WorldObject();
+        
+        //assignment value sshould be retrieved from XML files
         worldObject.setSize(0, 0, 32, 32);
         worldObject.setPosition(100, 100);
         worldObject.setTexture("../res/images/spritesheet_1.png", 0, 0, 96, 128, 0, 0, 32, 32);
         worldObject.setCollidable(true);
+        
+        
         return worldObject;
     }
 }
