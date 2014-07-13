@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="10" height="10" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Inner_256" tilewidth="32" tileheight="32">
+  <image source="Inner_256.png" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="121" name="Inq XP MT - Beach2" tilewidth="32" tileheight="32">
+  <image source="Inq XP Medieval Town/Inq XP MT - Beach2.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="133" name="Inq XP MT - Long Grass2" tilewidth="32" tileheight="32">
+  <image source="Inq XP Medieval Town/Inq XP MT - Long Grass2.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="145" name="Inq XP MT - Dirt" tilewidth="32" tileheight="32">
+  <image source="Inq XP Medieval Town/Inq XP MT - Dirt.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="157" name="Inq XP MT - Water3" tilewidth="32" tileheight="32">
+  <image source="Inq XP Medieval Town/Inq XP MT - Water3.png" width="384" height="128"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="10" height="10">
+  <data encoding="base64" compression="zlib">
+   eJzbxsDAsA2ItwNxKxruBuIeKD4ExYcJqJsIxehqQLgPiPuhGJs8IdwBxJ1A3EVAHcw9vQTUwdwzAYvcVDQM89MUNPHZSHgOkrpZaHLo5uHCAPl1N8Q=
+  </data>
+ </layer>
+</map>

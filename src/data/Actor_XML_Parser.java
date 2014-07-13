@@ -1,3 +1,9 @@
+/* 
+ *  You must contact the author of this material, and then ask for permission, before accepting the terms of this license.
+ *  You are not free to copy and redistribute the material in any medium or format.
+ *  You may view the material only to contribute to the material. 
+ *  You may  not use the material in any commercial way.
+ */
 package data;
 
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -212,22 +218,12 @@ public class Actor_XML_Parser {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);
-
             doc.getDocumentElement().normalize();
-
-            System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
             NodeList nList = doc.getElementsByTagName("npc");
-
-            System.out.println("----------------------------");
             for (int temp = 0; temp < nList.getLength(); temp++) {
-
                 Node nNode = nList.item(temp);
-
-                System.out.println("\t" + nNode.getNodeName());
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-
                     Element eElement = (Element) nNode;
-
                     id = eElement.getAttribute("id");
                     name = eElement.getElementsByTagName("name").item(0).getTextContent();
                     level = eElement.getElementsByTagName("level").item(0).getTextContent();

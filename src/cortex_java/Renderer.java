@@ -1,4 +1,9 @@
-
+/* 
+ *  You must contact the author of this material, and then ask for permission, before accepting the terms of this license.
+ *  You are not free to copy and redistribute the material in any medium or format.
+ *  You may view the material only to contribute to the material. 
+ *  You may  not use the material in any commercial way.
+ */
 package cortex_java;
 
 import world.World;
@@ -23,24 +28,6 @@ public class Renderer implements WorldListener {
 
     public Renderer() {
 
-        worldLayer = new BufferedImage[10];
-
-        worldLayer[0] = new BufferedImage(96, 128, BufferedImage.TYPE_INT_ARGB);
-        //holds a single pritesheet
-        worldLayer[1] = new BufferedImage(32, 32, BufferedImage.TYPE_INT_ARGB);
-        //holds a single frame
-        worldLayer[2] = new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB);
-        //holds a single local map
-
-        compositeLayer = new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB);
-        //holds all layers into a composite
-
-        composite_GO = compositeLayer.createGraphics();
-        composite_GO.setColor(Color.black);
-        composite_GO.fillRect(0, 0, compositeLayer.getWidth(), compositeLayer.getHeight());
-        composite_GO.setColor(Color.white);
-        composite_GO.drawString("Composite Layer", 350, 290);
-
     }
 
     @Override
@@ -63,9 +50,7 @@ public class Renderer implements WorldListener {
     void setWorld(World world) {
         this.world = world;
         listenToWorld(world);
-
-        worldLayer[0] = ResourceLoader.getImage(world.getWorldObject().getTexture().getTextureAddress());
-        worldLayer[0] = worldLayer[0].getSubimage(0, 0, 96, 128);
+        initRenderableWorld();
 
         render(world);
     }
@@ -77,6 +62,29 @@ public class Renderer implements WorldListener {
         composite_GO.setColor(Color.black);
         composite_GO.fillRect(0, 0, 800, 600);
         composite_GO.drawImage(worldLayer[1], world.getWorldObject().getXPosition(), world.getWorldObject().getYPosition(), null);
+    }
+
+    private void initRenderableWorld() {
+        worldLayer = new BufferedImage[10];
+
+        worldLayer[0] = new BufferedImage(world.getWorldObject().getTexture().textureSource_x2,world.getWorldObject().getTexture().textureSource_y2, BufferedImage.TYPE_INT_ARGB);
+        //holds a single pritesheet
+        worldLayer[1] = new BufferedImage(world.getWorldObject().getSize().width,world.getWorldObject().getSize().height, BufferedImage.TYPE_INT_ARGB);
+        //holds a single frame
+        worldLayer[2] = new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB);
+        //holds a single local map
+
+        compositeLayer = new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB);
+        //holds all layers into a composite
+
+        composite_GO = compositeLayer.createGraphics();
+        composite_GO.setColor(Color.black);
+        composite_GO.fillRect(0, 0, compositeLayer.getWidth(), compositeLayer.getHeight());
+        composite_GO.setColor(Color.white);
+        composite_GO.drawString("Composite Layer", 350, 290);
+
+        worldLayer[0] = ResourceLoader.getImage(world.getWorldObject().getTexture().getTextureAddress());
+        worldLayer[0] = worldLayer[0].getSubimage(0, 0, 96, 128);
     }
 
 }
