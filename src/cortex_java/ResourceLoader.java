@@ -48,7 +48,7 @@ public class ResourceLoader {
         //world properties
         worldObject.setSize(Integer.parseInt(parser.getSize_x1()), Integer.parseInt(parser.getSize_y1()), Integer.parseInt(parser.getSize_x2()), Integer.parseInt(parser.getSize_y2()));
         worldObject.setId(Integer.parseInt(parser.getId()));
-        worldObject.setTexture(parser.getTexture_address(), Integer.parseInt(parser.getTexture_source_x1()), Integer.parseInt(parser.getTexture_source_y1()), Integer.parseInt(parser.getTexture_source_x2()), Integer.parseInt(parser.getTexture_source_y2()), 0, 0, 32, 32);
+        worldObject.setTexture(parser.getTexture_address(), Integer.parseInt(parser.getTexture_source_x1()), Integer.parseInt(parser.getTexture_source_y1()), Integer.parseInt(parser.getTexture_source_x2()), Integer.parseInt(parser.getTexture_source_y2()), (Integer.parseInt(parser.getTexture_frame_y1())), (Integer.parseInt(parser.getTexture_frame_x1())), (Integer.parseInt(parser.getTexture_frame_x2())), (Integer.parseInt(parser.getTexture_frame_y2())));
         worldObject.setCollidable(Boolean.parseBoolean(parser.getCollidable()));
 
         //objects location needs to be derived from a local map class, default value (0,0)

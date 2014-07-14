@@ -20,7 +20,6 @@ import java.io.File;
  */
 public class Actor_XML_Parser {
 
-    private String texture_frame_y2;
     private String id;
     private String name;
     private String level;
@@ -29,8 +28,19 @@ public class Actor_XML_Parser {
     private String strength;
     private String willpower;
     private String texture_address;
+    private String texture_frame_y2;
     private String texture_frame_x1;
     private String texture_frame_y1;
+    private String texture_frame_x2;
+    private String texture_source_x1;
+    private String texture_source_y1;
+    private String texture_source_x2;
+    private String texture_source_y2;
+    private String collidable;
+    private String size_x1;
+    private String size_y1;
+    private String size_x2;
+    private String size_y2;
 
     public String getTexture_frame_y2() {
         return texture_frame_y2;
@@ -199,16 +209,6 @@ public class Actor_XML_Parser {
     public void setSize_y2(String size_y2) {
         this.size_y2 = size_y2;
     }
-    private String texture_frame_x2;
-    private String texture_source_x1;
-    private String texture_source_y1;
-    private String texture_source_x2;
-    private String texture_source_y2;
-    private String collidable;
-    private String size_x1;
-    private String size_y1;
-    private String size_x2;
-    private String size_y2;
 
     public void parseObjectById(int id_) {
 
@@ -220,34 +220,35 @@ public class Actor_XML_Parser {
             Document doc = dBuilder.parse(fXmlFile);
             doc.getDocumentElement().normalize();
             NodeList nList = doc.getElementsByTagName("npc");
-            
+
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
-                    if(eElement.getAttribute("id").equals(""+id_)){
-                    id = eElement.getAttribute("id");
-                    name = eElement.getElementsByTagName("name").item(0).getTextContent();
-                    level = eElement.getElementsByTagName("level").item(0).getTextContent();
-                    health = eElement.getElementsByTagName("health").item(0).getTextContent();
-                    agility = eElement.getElementsByTagName("agility").item(0).getTextContent();
-                    strength = eElement.getElementsByTagName("strength").item(0).getTextContent();
-                    willpower = eElement.getElementsByTagName("willpower").item(0).getTextContent();
-                    texture_address = eElement.getElementsByTagName("texture_address").item(0).getTextContent();
-                    texture_frame_x1 = eElement.getElementsByTagName("texture_frame_x1").item(0).getTextContent();
-                    texture_frame_y1 = eElement.getElementsByTagName("texture_frame_y1").item(0).getTextContent();
-                    texture_frame_x2 = eElement.getElementsByTagName("texture_frame_x2").item(0).getTextContent();
-                    texture_frame_y2 = eElement.getElementsByTagName("texture_frame_y2").item(0).getTextContent();
-                    texture_source_x1 = eElement.getElementsByTagName("texture_source_x1").item(0).getTextContent();
-                    texture_source_y1 = eElement.getElementsByTagName("texture_source_y1").item(0).getTextContent();
-                    texture_source_x2 = eElement.getElementsByTagName("texture_source_x2").item(0).getTextContent();
-                    texture_source_y2 = eElement.getElementsByTagName("texture_source_y2").item(0).getTextContent();
-                    collidable = eElement.getElementsByTagName("collidable").item(0).getTextContent();
-                    size_x1 = eElement.getElementsByTagName("size_x1").item(0).getTextContent();
-                    size_y1 = eElement.getElementsByTagName("size_y1").item(0).getTextContent();
-                    size_x2 = eElement.getElementsByTagName("size_x2").item(0).getTextContent();
-                    size_y2 = eElement.getElementsByTagName("size_y2").item(0).getTextContent();
-                }}
+                    if (eElement.getAttribute("id").equals("" + id_)) {
+                        id = eElement.getAttribute("id");
+                        name = eElement.getElementsByTagName("name").item(0).getTextContent();
+                        level = eElement.getElementsByTagName("level").item(0).getTextContent();
+                        health = eElement.getElementsByTagName("health").item(0).getTextContent();
+                        agility = eElement.getElementsByTagName("agility").item(0).getTextContent();
+                        strength = eElement.getElementsByTagName("strength").item(0).getTextContent();
+                        willpower = eElement.getElementsByTagName("willpower").item(0).getTextContent();
+                        texture_address = eElement.getElementsByTagName("texture_address").item(0).getTextContent();
+                        texture_frame_x1 = eElement.getElementsByTagName("texture_frame_x1").item(0).getTextContent();
+                        texture_frame_y1 = eElement.getElementsByTagName("texture_frame_y1").item(0).getTextContent();
+                        texture_frame_x2 = eElement.getElementsByTagName("texture_frame_x2").item(0).getTextContent();
+                        texture_frame_y2 = eElement.getElementsByTagName("texture_frame_y2").item(0).getTextContent();
+                        texture_source_x1 = eElement.getElementsByTagName("texture_source_x1").item(0).getTextContent();
+                        texture_source_y1 = eElement.getElementsByTagName("texture_source_y1").item(0).getTextContent();
+                        texture_source_x2 = eElement.getElementsByTagName("texture_source_x2").item(0).getTextContent();
+                        texture_source_y2 = eElement.getElementsByTagName("texture_source_y2").item(0).getTextContent();
+                        collidable = eElement.getElementsByTagName("collidable").item(0).getTextContent();
+                        size_x1 = eElement.getElementsByTagName("size_x1").item(0).getTextContent();
+                        size_y1 = eElement.getElementsByTagName("size_y1").item(0).getTextContent();
+                        size_x2 = eElement.getElementsByTagName("size_x2").item(0).getTextContent();
+                        size_y2 = eElement.getElementsByTagName("size_y2").item(0).getTextContent();
+                    }
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -122,12 +122,21 @@ public class WorldObject {
 
     public void setTexture(String filename, int source_x1, int source_y1, int source_x2, int source_y2, int frame_x1, int frame_y1, int frame_x2, int frame_y2) {
         texture.setTextureAddress(filename);
-        texture.setTextureSource(source_x1, source_y1, source_x2, source_y2);
-        texture.setTextureFrame(frame_x1, frame_y1, frame_x2, frame_y2);
+        texture.setTextureSource_x1(source_x1);
+        texture.setTextureSource_y1(source_y1);
+        texture.setTextureSource_x2(source_x2);
+        texture.setTextureSource_y2(source_y2);
+        texture.setTextureFrame_x1(frame_x1);
+        texture.setTextureFrame_y1(frame_y1);
+        texture.setTextureFrame_x2(frame_x2);
+        texture.setTextureFrame_y2(frame_y2);
     }
 
     public void setTextureFrame(int x1, int y1, int x2, int y2) {
-        texture.setTextureFrame(x1, y1, x2, y2);
+        texture.setTextureFrame_x1(x1);
+        texture.setTextureFrame_y1(y1);
+        texture.setTextureFrame_x2(x2);
+        texture.setTextureFrame_y2(y2);
     }
 
     public void setDirection(Direction dir) {
@@ -231,24 +240,24 @@ public class WorldObject {
     public void move() {
         switch (direction) {
             case NORTH:
-                setPosition((int) (getXPosition()), (int) (getYPosition() - getHeight()/2));
+                setPosition((int) (getXPosition()), (int) (getYPosition() - getHeight() / 2));
 
                 animate();
 
                 break;
             case SOUTH:
-                setPosition((int) (getXPosition()), (int) (getYPosition() + getHeight()/2));
+                setPosition((int) (getXPosition()), (int) (getYPosition() + getHeight() / 2));
 
                 animate();
 
                 break;
             case WEST:
-                setPosition((int) (getXPosition() - getWidth()/2), (int) (getYPosition()));
+                setPosition((int) (getXPosition() - getWidth() / 2), (int) (getYPosition()));
                 animate();
 
                 break;
             case EAST:
-                setPosition((int) (getXPosition() + getWidth()/2), (int) (getYPosition()));
+                setPosition((int) (getXPosition() + getWidth() / 2), (int) (getYPosition()));
                 animate();
                 break;
         }

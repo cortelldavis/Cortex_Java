@@ -12,7 +12,7 @@ import java.util.*;
  *
  * @author Cortell Davis <cortelldavis@gmail.com>
  */
-public class Map {
+public class WorldMap {
 
     //The Map Class will handle the positioning of world objects ,the layout of floor tiles, the collection of in world things, and other map related things. 
     //The Map Class will also handle nodes, grids, cells, and local map transitions to other adjacent maps.
@@ -22,7 +22,7 @@ public class Map {
      * lightweight map data collection as opposed to storing the actual images in each node, instead nodes can just be mapped linearly from index(1) < mapNode.getNodeCount();
      */
 
-    public Map() {
+    public WorldMap() {
         for (Integer key : mapNode.keySet()) {
         }
     }

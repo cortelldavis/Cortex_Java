@@ -41,14 +41,35 @@ public class Cortex_Client implements Runnable {
 
         vw.updateDisplay();
 
-        for (int count = 1; count <= 2; count++) {
-            System.out.println("object has been created in the world:\nID: " + world.getWorldObjectById(count).getId());
+        for (int count = 1; count <= 3; count++) {
+            System.out.println("\nobject has been created in the world:\nID: " + world.getWorldObjectById(count).getId());
             System.out.println("name: " + ((Actor) world.getWorldObjectById(count)).getActor_Name());
             System.out.println("level: " + ((Actor) world.getWorldObjectById(count)).getLevel());
             System.out.println("health: " + ((Actor) world.getWorldObjectById(count)).getHealth());
             System.out.println("agility: " + ((Actor) world.getWorldObjectById(count)).getAgility());
             System.out.println("strength: " + ((Actor) world.getWorldObjectById(count)).getStrength());
             System.out.println("willpower: " + ((Actor) world.getWorldObjectById(count)).getWillpower());
+            System.out.println("World Object Properties:");
+            System.out.println("\n");
+            System.out.println("size x1: " + ((Actor) world.getWorldObjectById(count)).getSize().x);
+            System.out.println("size y1: " + ((Actor) world.getWorldObjectById(count)).getSize().y);
+            System.out.println("size x2: " + ((Actor) world.getWorldObjectById(count)).getSize().width);
+            System.out.println("size y2: " + ((Actor) world.getWorldObjectById(count)).getSize().height);
+            System.out.println("\n");
+            System.out.println("texture frame y1: " + ((Actor) world.getWorldObjectById(count)).getTexture().getTextureFrame_y1());
+            System.out.println("texture frame x1: " + ((Actor) world.getWorldObjectById(count)).getTexture().getTextureFrame_x1());
+            System.out.println("texture frame y2: " + ((Actor) world.getWorldObjectById(count)).getTexture().getTextureFrame_y2());
+            System.out.println("texture frame x2: " + ((Actor) world.getWorldObjectById(count)).getTexture().getTextureFrame_x2());
+            System.out.println("\n");
+            System.out.println("texture source y1: " + ((Actor) world.getWorldObjectById(count)).getTexture().getTextureSource_y1());
+            System.out.println("texture source x1: " + ((Actor) world.getWorldObjectById(count)).getTexture().getTextureSource_x1());
+            System.out.println("texture source y2: " + ((Actor) world.getWorldObjectById(count)).getTexture().getTextureSource_y2());
+            System.out.println("texture source x2: " + ((Actor) world.getWorldObjectById(count)).getTexture().getTextureSource_x2());
+            System.out.println("\n");
+            System.out.println("position x:" + ((Actor) world.getWorldObjectById(count)).getPosition().x);
+            System.out.println("position y:" + ((Actor) world.getWorldObjectById(count)).getPosition().y);
+            System.out.println("collidable: " + ((Actor) world.getWorldObjectById(count)).isCollidable());
+            System.out.println("\n");
         }
 
         while (running) {

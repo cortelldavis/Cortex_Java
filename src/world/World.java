@@ -7,6 +7,7 @@
 package world;
 
 import cortex_java.ResourceLoader;
+import cortex_java.WorldMap;
 import java.util.ArrayList;
 
 /**
@@ -15,8 +16,9 @@ import java.util.ArrayList;
  */
 public class World {
 
-    ArrayList<WorldListener> worldListeners;
-    ArrayList<WorldObject> worldObjects;
+    private ArrayList<WorldListener> worldListeners;
+    private ArrayList<WorldObject> worldObjects;
+    private WorldMap worldMap;
 
     public World() {
         worldListeners = new ArrayList<WorldListener>();
@@ -36,23 +38,23 @@ public class World {
 
     public void createWorld() {
         System.out.println("World: new world has been created");
-        createWorldObject(2);
-        createWorldObject(1);
+        createWorldObjectById(2);
+        createWorldObjectById(1);
+        createWorldObjectById(3);
         worldHasChanged();
     }
 
-    public void createWorldObject(int id) {
+    public void createWorldObjectById(int id) {
 
         WorldObject worldObject = ResourceLoader.getWorldObjectById(id);
         worldObjects.add(worldObject);
         worldHasChanged();
-       
 
     }
 
     public WorldObject getWorldObjectById(int id) {
 
-        WorldObject targetObject=null;
+        WorldObject targetObject = null;
         for (WorldObject wo : worldObjects) {
             if (id == wo.getId()) {
                 targetObject = wo;
@@ -67,6 +69,10 @@ public class World {
 
         worldObjects.get(0).move();
         worldHasChanged();
+    }
+
+    public WorldMap getWorldMap() {
+        return worldMap;
     }
 
 }

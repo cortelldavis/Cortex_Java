@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import javax.swing.*;
+
 /**
  *
  * @author cortell davis
@@ -21,8 +22,9 @@ public class View extends JFrame {
 
     public View() {
         setTitle("Cortex Game Client");
-        setBounds(400, 100, 800, 600);
+        setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
 
         dp = new DisplayPanel();

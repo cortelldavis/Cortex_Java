@@ -20,12 +20,15 @@ import java.awt.image.BufferedImage;
  */
 public class Renderer implements WorldListener {
 
-    BufferedImage compositeLayer;
+    BufferedImage compositeLayer, compositeArray[];
     Graphics2D composite_GO;
     World world;
 
     public Renderer() {
+        compositeLayer = new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB);
+        composite_GO = compositeLayer.createGraphics();
 
+        compositeArray = new BufferedImage[10];
     }
 
     @Override
@@ -56,16 +59,20 @@ public class Renderer implements WorldListener {
 
     private void render(World world) {
 
-        
-        compositeLayer = new BufferedImage(800,600,BufferedImage.TYPE_INT_ARGB);
-        composite_GO=compositeLayer.createGraphics();
-        composite_GO.setColor(Color.black);
-        composite_GO.fillRect(0, 0, 800, 600);
-        
         //render local map
         render(world.getWorldMap());
-
         //render world objects
+        renderWorldObject(world.getWorldObjectById(2));
+
+        //testing purposes
+        composite_GO.setColor(Color.BLACK);
+        composite_GO.fillRect(0, 0, 800, 600);
+        composite_GO.drawImage(compositeArray[0], 0, 0, null);
     }
 
+    public void renderWorldObject(WorldObject worldObject) {
+
+        compositeArray[0] = ResourceLoader.getImage(worldObject.getTexture().getTextureAddress()).getSubimage(worldObject.getTexture().getTextureSource_x1(),worldObject.getTexture().getTextureSource_y1() , 96, 128);
+
+    }
 }
