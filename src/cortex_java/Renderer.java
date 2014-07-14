@@ -24,8 +24,6 @@ public class Renderer implements WorldListener {
     Graphics2D composite_GO;
     World world;
 
-
-
     public Renderer() {
 
     }
@@ -53,13 +51,21 @@ public class Renderer implements WorldListener {
         render(world);
     }
 
-    private void render(World world) {
-
-        //render local map
-        //render world objects
-        
+    public void render(WorldMap worldMap) {
     }
 
+    private void render(World world) {
 
+        
+        compositeLayer = new BufferedImage(800,600,BufferedImage.TYPE_INT_ARGB);
+        composite_GO=compositeLayer.createGraphics();
+        composite_GO.setColor(Color.black);
+        composite_GO.fillRect(0, 0, 800, 600);
+        
+        //render local map
+        render(world.getWorldMap());
+
+        //render world objects
+    }
 
 }
