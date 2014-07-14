@@ -34,7 +34,6 @@ public class Cortex_Client implements Runnable {
         vw.setDisplayImage(r.getCompositeRender());
 
         Controller control = new Controller();
-        System.out.println("no keys pressed");
 
         vw.getDisplayPanel().setFocusable(true);
         vw.getDisplayPanel().requestFocusInWindow();
@@ -42,31 +41,18 @@ public class Cortex_Client implements Runnable {
 
         vw.updateDisplay();
 
+        for (int count = 1; count <= 2; count++) {
+            System.out.println("object has been created in the world:\nID: " + world.getWorldObjectById(count).getId());
+            System.out.println("name: " + ((Actor) world.getWorldObjectById(count)).getActor_Name());
+            System.out.println("level: " + ((Actor) world.getWorldObjectById(count)).getLevel());
+            System.out.println("health: " + ((Actor) world.getWorldObjectById(count)).getHealth());
+            System.out.println("agility: " + ((Actor) world.getWorldObjectById(count)).getAgility());
+            System.out.println("strength: " + ((Actor) world.getWorldObjectById(count)).getStrength());
+            System.out.println("willpower: " + ((Actor) world.getWorldObjectById(count)).getWillpower());
+        }
+
         while (running) {
 
-            if (control.isKeyPressed()) {
-
-                if (control.getCommand() == Command.UP) {
-                    world.getWorldObject().setDirection(Direction.NORTH);
-                    world.moveWorldObject();
-                }
-                if (control.getCommand() == Command.LEFT) {
-                    world.getWorldObject().setDirection(Direction.WEST);
-                    world.moveWorldObject();
-                }
-                if (control.getCommand() == Command.DOWN) {
-                    world.getWorldObject().setDirection(Direction.SOUTH);
-                    world.moveWorldObject();
-                }
-                if (control.getCommand() == Command.RIGHT) {
-                    world.getWorldObject().setDirection(Direction.EAST);
-                    world.moveWorldObject();
-                }
-
-                vw.updateDisplay();
-                control.setKeyPressed(false);
-                control.setCommand(Command.NONE);
-            }
             try {
                 Thread.sleep(30);
             } catch (InterruptedException ex) {

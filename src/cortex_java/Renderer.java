@@ -20,11 +20,11 @@ import java.awt.image.BufferedImage;
  */
 public class Renderer implements WorldListener {
 
-    BufferedImage activeImage, compositeLayer;
-    Graphics2D active_GO, composite_GO;
+    BufferedImage compositeLayer;
+    Graphics2D composite_GO;
     World world;
 
-    BufferedImage worldLayer[];
+
 
     public Renderer() {
 
@@ -33,7 +33,6 @@ public class Renderer implements WorldListener {
     @Override
     public void onWorldEvent(WorldEvent e) {
 
-        System.out.println("Renderer has detected a change in the world");
         render(world);
     }
 
@@ -50,41 +49,17 @@ public class Renderer implements WorldListener {
     void setWorld(World world) {
         this.world = world;
         listenToWorld(world);
-        initRenderableWorld();
 
         render(world);
     }
 
     private void render(World world) {
-        worldLayer[1] = worldLayer[0].getSubimage(world.getWorldObject().getTexture().getTextureFrame().x, world.getWorldObject().getTexture().getTextureFrame().y, world.getWorldObject().getTexture().getTextureFrame().width, world.getWorldObject().getTexture().getTextureFrame().height);
-        // worldLayer[1] = worldLayer[0].getSubimage(32,32,32,32);
 
-        composite_GO.setColor(Color.black);
-        composite_GO.fillRect(0, 0, 800, 600);
-        composite_GO.drawImage(worldLayer[1], world.getWorldObject().getXPosition(), world.getWorldObject().getYPosition(), null);
+        //render local map
+        //render world objects
+        
     }
 
-    private void initRenderableWorld() {
-        worldLayer = new BufferedImage[10];
 
-        worldLayer[0] = new BufferedImage(world.getWorldObject().getTexture().textureSource_x2,world.getWorldObject().getTexture().textureSource_y2, BufferedImage.TYPE_INT_ARGB);
-        //holds a single pritesheet
-        worldLayer[1] = new BufferedImage(world.getWorldObject().getSize().width,world.getWorldObject().getSize().height, BufferedImage.TYPE_INT_ARGB);
-        //holds a single frame
-        worldLayer[2] = new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB);
-        //holds a single local map
-
-        compositeLayer = new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB);
-        //holds all layers into a composite
-
-        composite_GO = compositeLayer.createGraphics();
-        composite_GO.setColor(Color.black);
-        composite_GO.fillRect(0, 0, compositeLayer.getWidth(), compositeLayer.getHeight());
-        composite_GO.setColor(Color.white);
-        composite_GO.drawString("Composite Layer", 350, 290);
-
-        worldLayer[0] = ResourceLoader.getImage(world.getWorldObject().getTexture().getTextureAddress());
-        worldLayer[0] = worldLayer[0].getSubimage(0, 0, 96, 128);
-    }
 
 }

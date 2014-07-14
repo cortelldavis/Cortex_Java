@@ -37,6 +37,36 @@
                 <size_x2>32</size_x2>
                 <size_y2>32</size_y2>
             </size>
+        </npc>   
+        <npc id="2">
+            <name>Geoffrey</name>
+            <level>2</level>
+            <health>20</health>
+            <agility>20</agility>
+            <strength>20</strength>
+            <willpower>20</willpower>
+            <texture>
+                <texture_source>
+                    <texture_source_x1>80</texture_source_x1>
+                    <texture_source_y1>0</texture_source_y1>
+                    <texture_source_x2>96</texture_source_x2>
+                    <texture_source_y2>128</texture_source_y2>
+                </texture_source>
+                <texture_frame>
+                    <texture_frame_x1>0</texture_frame_x1>
+                    <texture_frame_y1>0</texture_frame_y1>
+                    <texture_frame_x2>32</texture_frame_x2>
+                    <texture_frame_y2>32</texture_frame_y2>
+                </texture_frame>
+                <texture_address>../res/images/spritesheet_1.png</texture_address>
+            </texture>
+            <collidable>true</collidable>
+            <size>
+                <size_x1>0</size_x1>
+                <size_y1>0</size_y1>
+                <size_x2>32</size_x2>
+                <size_y2>32</size_y2>
+            </size>
         </npc>
     </actors>
 </world_objects>

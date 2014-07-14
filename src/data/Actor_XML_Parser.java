@@ -210,7 +210,7 @@ public class Actor_XML_Parser {
     private String size_x2;
     private String size_y2;
 
-    public void parse() {
+    public void parseObjectById(int id_) {
 
         try {
 
@@ -220,10 +220,12 @@ public class Actor_XML_Parser {
             Document doc = dBuilder.parse(fXmlFile);
             doc.getDocumentElement().normalize();
             NodeList nList = doc.getElementsByTagName("npc");
+            
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
+                    if(eElement.getAttribute("id").equals(""+id_)){
                     id = eElement.getAttribute("id");
                     name = eElement.getElementsByTagName("name").item(0).getTextContent();
                     level = eElement.getElementsByTagName("level").item(0).getTextContent();
@@ -245,7 +247,7 @@ public class Actor_XML_Parser {
                     size_y1 = eElement.getElementsByTagName("size_y1").item(0).getTextContent();
                     size_x2 = eElement.getElementsByTagName("size_x2").item(0).getTextContent();
                     size_y2 = eElement.getElementsByTagName("size_y2").item(0).getTextContent();
-                }
+                }}
             }
         } catch (Exception e) {
             e.printStackTrace();

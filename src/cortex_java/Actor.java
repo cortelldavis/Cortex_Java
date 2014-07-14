@@ -15,17 +15,17 @@ import world.WorldObject;
 public class Actor extends WorldObject {
 
     //actor name is a name that the actor will have
-    String Actor_Name;
+    private String Actor_Name;
     //level determines how much experience an Actor has earned
-    int Level;
+    private int Level;
     //health determines how much damage an actor can take
-    int Health;
+    private int Health;
     //agility determines how agile an actor is
-    int Agility;
+    private int Agility;
     //strength determines how much damage an actor can deal
-    int Strength;
+    private int Strength;
     //willpower determines how much supernatural ability a player can utilize
-    int Willpower;
+    private int Willpower;
 
     public String getActor_Name() {
         return Actor_Name;

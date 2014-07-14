@@ -23,7 +23,7 @@ public class ResourceLoader {
     static Actor_XML_Parser parser = new Actor_XML_Parser();
 
     public static BufferedImage getImage(String filename) {
-        URL url = rl.getClass().getResource("" + filename);
+        URL url = rl.getClass().getResource(filename);
         try {
             return ImageIO.read(url);
         } catch (IOException e) {
@@ -33,18 +33,26 @@ public class ResourceLoader {
         return null;
     }
 
-    public static WorldObject getWorldObjectById(String id) {
-        WorldObject worldObject = new WorldObject();
-        parser.parse();
-        //assignment value sshould be retrieved from XML files
+    public static WorldObject getWorldObjectById(int id) {
+        Actor worldObject = new Actor();
+        parser.parseObjectById(id);
+
+        //actor properties
+        worldObject.setActor_Name(parser.getName());
+        worldObject.setLevel(Integer.parseInt(parser.getLevel()));
+        worldObject.setHealth(Integer.parseInt(parser.getHealth()));
+        worldObject.setAgility(Integer.parseInt(parser.getAgility()));
+        worldObject.setStrength(Integer.parseInt(parser.getStrength()));
+        worldObject.setWillpower(Integer.parseInt(parser.getWillpower()));
+
+        //world properties
         worldObject.setSize(Integer.parseInt(parser.getSize_x1()), Integer.parseInt(parser.getSize_y1()), Integer.parseInt(parser.getSize_x2()), Integer.parseInt(parser.getSize_y2()));
-
-        //objects location needs to be derived from a local map class
-        worldObject.setPosition(100, 100);
-
+        worldObject.setId(Integer.parseInt(parser.getId()));
         worldObject.setTexture(parser.getTexture_address(), Integer.parseInt(parser.getTexture_source_x1()), Integer.parseInt(parser.getTexture_source_y1()), Integer.parseInt(parser.getTexture_source_x2()), Integer.parseInt(parser.getTexture_source_y2()), 0, 0, 32, 32);
         worldObject.setCollidable(Boolean.parseBoolean(parser.getCollidable()));
-        parser = null;
+
+        //objects location needs to be derived from a local map class, default value (0,0)
+        worldObject.setPosition(0, 0);
         return worldObject;
     }
 }

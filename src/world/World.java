@@ -36,20 +36,30 @@ public class World {
 
     public void createWorld() {
         System.out.println("World: new world has been created");
-        createWorldObject("World Object ID");
+        createWorldObject(2);
+        createWorldObject(1);
         worldHasChanged();
     }
 
-    public void createWorldObject(String id) {
+    public void createWorldObject(int id) {
 
         WorldObject worldObject = ResourceLoader.getWorldObjectById(id);
         worldObjects.add(worldObject);
         worldHasChanged();
+       
 
     }
 
-    public WorldObject getWorldObject() {
-        return worldObjects.get(0);
+    public WorldObject getWorldObjectById(int id) {
+
+        WorldObject targetObject=null;
+        for (WorldObject wo : worldObjects) {
+            if (id == wo.getId()) {
+                targetObject = wo;
+            }
+        }
+
+        return targetObject;
 
     }
 

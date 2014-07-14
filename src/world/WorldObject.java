@@ -231,24 +231,24 @@ public class WorldObject {
     public void move() {
         switch (direction) {
             case NORTH:
-                setPosition((int) (getXPosition()), (int) (getYPosition() - getHeight()));
+                setPosition((int) (getXPosition()), (int) (getYPosition() - getHeight()/2));
 
                 animate();
 
                 break;
             case SOUTH:
-                setPosition((int) (getXPosition()), (int) (getYPosition() + getHeight()));
+                setPosition((int) (getXPosition()), (int) (getYPosition() + getHeight()/2));
 
                 animate();
 
                 break;
             case WEST:
-                setPosition((int) (getXPosition() - getWidth()), (int) (getYPosition()));
+                setPosition((int) (getXPosition() - getWidth()/2), (int) (getYPosition()));
                 animate();
 
                 break;
             case EAST:
-                setPosition((int) (getXPosition() + getWidth()), (int) (getYPosition()));
+                setPosition((int) (getXPosition() + getWidth()/2), (int) (getYPosition()));
                 animate();
                 break;
         }
