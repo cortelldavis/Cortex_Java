@@ -41,6 +41,7 @@ public class World {
         createWorldObjectById(2);
         createWorldObjectById(1);
         createWorldObjectById(3);
+        createWorldMap();
         worldHasChanged();
     }
 
@@ -73,6 +74,11 @@ public class World {
 
     public WorldMap getWorldMap() {
         return worldMap;
+    }
+
+    private void createWorldMap() {
+        worldMap = ResourceLoader.getWorldMap();
+        worldHasChanged();
     }
 
 }

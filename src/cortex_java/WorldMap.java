@@ -16,22 +16,72 @@ public class WorldMap {
 
     //The Map Class will handle the positioning of world objects ,the layout of floor tiles, the collection of in world things, and other map related things. 
     //The Map Class will also handle nodes, grids, cells, and local map transitions to other adjacent maps.
-    HashMap<Integer, String> mapNode = new HashMap<Integer, String>();
-    /*  
-     * The map will have Integer instances as keys, and String instances as values. This means an integer 30 can be mapped to an address "greentile.png" this allows for 
+    private HashMap<Integer, String> mapping;
+    private String width, height, tileWidth, tileHeight;
+    ArrayList<String> source;
+
+    public String getWidth() {
+        return width;
+    }
+
+    public void setWidth(String width) {
+        this.width = width;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    public String getTileWidth() {
+        return tileWidth;
+    }
+
+    public void setTileWidth(String tileWidth) {
+        this.tileWidth = tileWidth;
+    }
+
+    public String getTileHeight() {
+        return tileHeight;
+    }
+
+    public void setTileHeight(String tileHeight) {
+        this.tileHeight = tileHeight;
+    }
+
+    public ArrayList getSource() {
+        return source;
+    }
+
+    public void setSource(ArrayList source) {
+        this.source = source;
+    }
+
+    /*
+     * The map will have Integer instances as keys, and String instances as values. This means an integer 30 can be mapped to an address "greentile.png" this allows for
      * lightweight map data collection as opposed to storing the actual images in each node, instead nodes can just be mapped linearly from index(1) < mapNode.getNodeCount();
      */
+    public HashMap<Integer, String> getMapping() {
+        return mapping;
+    }
+
+    public void setMapping(HashMap mapping) {
+        this.mapping = mapping;
+    }
 
     public WorldMap() {
-        for (Integer key : mapNode.keySet()) {
-        }
     }
-    /*
-     *The above for loop will iterate through the mapNode and assign each node inside of a given map a pair of keys and values, that in conjunction
-     *represent an index and a string address. The index points to a rectangle that is used to represent cells or grids in the game(for floor textures it would be 128 x 128 px rects) , and
-     *the string address is a filename that points to a image file residing in the res/images project directory.
-    */
-    
-    
-    
+
+    public void printMap() {
+        System.out.println(mapping.entrySet());
+        System.out.println(width);
+        System.out.println(height);
+        System.out.println(tileWidth);
+        System.out.println(tileHeight);
+        System.out.println(source.toString());
+    }
+
 }

@@ -40,7 +40,7 @@ public class Cortex_Client implements Runnable {
         vw.getDisplayPanel().addKeyListener(control);
 
         vw.updateDisplay();
-
+/*
         for (int count = 1; count <= 3; count++) {
             System.out.println("\nobject has been created in the world:\nID: " + world.getWorldObjectById(count).getId());
             System.out.println("name: " + ((Actor) world.getWorldObjectById(count)).getActor_Name());
@@ -71,7 +71,11 @@ public class Cortex_Client implements Runnable {
             System.out.println("collidable: " + ((Actor) world.getWorldObjectById(count)).isCollidable());
             System.out.println("\n");
         }
-
+*/
+        
+       world.getWorldMap().printMap();
+        
+        
         while (running) {
 
             try {

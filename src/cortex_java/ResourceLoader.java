@@ -7,9 +7,11 @@
 package cortex_java;
 
 import data.Actor_XML_Parser;
+import data.WorldMap_XML_Parser;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import javax.imageio.ImageIO;
 import world.WorldObject;
 
@@ -19,8 +21,9 @@ import world.WorldObject;
  */
 public class ResourceLoader {
 
-    static ResourceLoader rl = new ResourceLoader();
-    static Actor_XML_Parser parser = new Actor_XML_Parser();
+    private static ResourceLoader rl = new ResourceLoader();
+    private static Actor_XML_Parser Actor_Parser = new Actor_XML_Parser();
+    private static WorldMap_XML_Parser Map_Parser = new WorldMap_XML_Parser();
 
     public static BufferedImage getImage(String filename) {
         URL url = rl.getClass().getResource(filename);
@@ -35,24 +38,39 @@ public class ResourceLoader {
 
     public static WorldObject getWorldObjectById(int id) {
         Actor worldObject = new Actor();
-        parser.parseObjectById(id);
+        Actor_Parser.parseObjectById(id);
 
         //actor properties
-        worldObject.setActor_Name(parser.getName());
-        worldObject.setLevel(Integer.parseInt(parser.getLevel()));
-        worldObject.setHealth(Integer.parseInt(parser.getHealth()));
-        worldObject.setAgility(Integer.parseInt(parser.getAgility()));
-        worldObject.setStrength(Integer.parseInt(parser.getStrength()));
-        worldObject.setWillpower(Integer.parseInt(parser.getWillpower()));
+        worldObject.setActor_Name(Actor_Parser.getName());
+        worldObject.setLevel(Integer.parseInt(Actor_Parser.getLevel()));
+        worldObject.setHealth(Integer.parseInt(Actor_Parser.getHealth()));
+        worldObject.setAgility(Integer.parseInt(Actor_Parser.getAgility()));
+        worldObject.setStrength(Integer.parseInt(Actor_Parser.getStrength()));
+        worldObject.setWillpower(Integer.parseInt(Actor_Parser.getWillpower()));
 
         //world properties
-        worldObject.setSize(Integer.parseInt(parser.getSize_x1()), Integer.parseInt(parser.getSize_y1()), Integer.parseInt(parser.getSize_x2()), Integer.parseInt(parser.getSize_y2()));
-        worldObject.setId(Integer.parseInt(parser.getId()));
-        worldObject.setTexture(parser.getTexture_address(), Integer.parseInt(parser.getTexture_source_x1()), Integer.parseInt(parser.getTexture_source_y1()), Integer.parseInt(parser.getTexture_source_x2()), Integer.parseInt(parser.getTexture_source_y2()), (Integer.parseInt(parser.getTexture_frame_y1())), (Integer.parseInt(parser.getTexture_frame_x1())), (Integer.parseInt(parser.getTexture_frame_x2())), (Integer.parseInt(parser.getTexture_frame_y2())));
-        worldObject.setCollidable(Boolean.parseBoolean(parser.getCollidable()));
+        worldObject.setSize(Integer.parseInt(Actor_Parser.getSize_x1()), Integer.parseInt(Actor_Parser.getSize_y1()), Integer.parseInt(Actor_Parser.getSize_x2()), Integer.parseInt(Actor_Parser.getSize_y2()));
+        worldObject.setId(Integer.parseInt(Actor_Parser.getId()));
+        worldObject.setTexture(Actor_Parser.getTexture_address(), Integer.parseInt(Actor_Parser.getTexture_source_x1()), Integer.parseInt(Actor_Parser.getTexture_source_y1()), Integer.parseInt(Actor_Parser.getTexture_source_x2()), Integer.parseInt(Actor_Parser.getTexture_source_y2()), (Integer.parseInt(Actor_Parser.getTexture_frame_y1())), (Integer.parseInt(Actor_Parser.getTexture_frame_x1())), (Integer.parseInt(Actor_Parser.getTexture_frame_x2())), (Integer.parseInt(Actor_Parser.getTexture_frame_y2())));
+        worldObject.setCollidable(Boolean.parseBoolean(Actor_Parser.getCollidable()));
 
         //objects location needs to be derived from a local map class, default value (0,0)
         worldObject.setPosition(0, 0);
         return worldObject;
     }
+
+    public static WorldMap getWorldMap() {
+
+        WorldMap worldMap = new WorldMap();
+        Map_Parser.parse();
+
+        worldMap.setMapping(Map_Parser.getMapping());
+        worldMap.setHeight(Map_Parser.getHeight());
+        worldMap.setSource(Map_Parser.getSource());
+        worldMap.setTileHeight(Map_Parser.getTileHeight());
+        worldMap.setTileWidth(Map_Parser.getTileWidth());
+        worldMap.setWidth(Map_Parser.getWidth());
+        return worldMap;
+    }
+
 }
