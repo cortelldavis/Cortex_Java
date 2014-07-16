@@ -73,7 +73,7 @@ public class Cortex_Client implements Runnable {
         }
 */
         
-       world.getWorldMap().printMap();
+    //   world.getWorldMap().printMap();
         
         
         while (running) {

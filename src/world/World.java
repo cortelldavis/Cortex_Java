@@ -37,7 +37,6 @@ public class World {
     }
 
     public void createWorld() {
-        System.out.println("World: new world has been created");
         createWorldObjectById(2);
         createWorldObjectById(1);
         createWorldObjectById(3);

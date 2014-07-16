@@ -80,7 +80,7 @@ public class WorldMap_XML_Parser {
             Document doc = dBuilder.parse(fXmlFile);
             doc.getDocumentElement().normalize();
             NodeList nList = doc.getElementsByTagName("tile");
-            NodeList nList2 = doc.getElementsByTagName("image");
+            NodeList nList2 = doc.getElementsByTagName("tileset");
             NodeList nList3 = doc.getElementsByTagName("map");
 
             for (int temp = 0; temp < nList3.getLength(); temp++) {
@@ -96,7 +96,7 @@ public class WorldMap_XML_Parser {
             for (int temp = 0; temp < nList2.getLength(); temp++) {
                 Node n = nList2.item(temp);
                 Element e = (Element) n;
-                source.add(e.getAttribute("source"));
+                source.add("../res/images/" + e.getAttribute("name") + ".png");
             }
 
             for (int temp = 0; temp < nList.getLength(); temp++) {
