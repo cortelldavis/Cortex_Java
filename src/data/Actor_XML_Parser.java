@@ -214,7 +214,7 @@ public class Actor_XML_Parser {
 
         try {
 
-            File fXmlFile = new File("src/data/world_objects.xml");
+            File fXmlFile = new File("src/res/xml/world_objects.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);

@@ -74,7 +74,7 @@ public class WorldMap_XML_Parser {
         mapping = new HashMap< Integer, String>();
         source = new ArrayList<String>();
         try {
-            File fXmlFile = new File("src/data/myMap.tmx");
+            File fXmlFile = new File("src/res/xml/myMap.tmx");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);

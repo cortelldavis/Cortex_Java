@@ -4,9 +4,11 @@
  *  You may view the material only to contribute to the material. 
  *  You may  not use the material in any commercial way.
  */
-package cortex_java;
+package world;
 
+import java.awt.Point;
 import java.util.*;
+import world.WorldObject;
 
 /**
  *
@@ -84,4 +86,16 @@ public class WorldMap {
         System.out.println(source.toString());
     }
 
+    private class MapGrid {
+
+        //this private class allows for positioning of world objects.
+        Point nodeSize, gridSize;
+
+        ArrayList<Point> nodeList;
+
+        public void addObjectToGrid(WorldObject worldObject, int index) {
+            worldObject.setPosition(nodeList.get(index));
+        }
+
+    }
 }

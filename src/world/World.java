@@ -7,7 +7,6 @@
 package world;
 
 import cortex_java.ResourceLoader;
-import cortex_java.WorldMap;
 import java.util.ArrayList;
 
 /**
@@ -37,7 +36,7 @@ public class World {
     }
 
     public void createWorld() {
-        createWorldObjectById(2);
+                                                                 createWorldObjectById(2);
         createWorldObjectById(1);
         createWorldObjectById(3);
         createWorldMap();

@@ -6,6 +6,7 @@
  */
 package cortex_java;
 
+import world.WorldMap;
 import data.Actor_XML_Parser;
 import data.WorldMap_XML_Parser;
 import java.awt.image.BufferedImage;
