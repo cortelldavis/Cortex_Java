@@ -56,24 +56,36 @@ public class ControlStateAdapter {
     }
 
     void loop() {
-        
-        
+
         state.onStart();
+        state.onExit();
 
-        if (controller.isKeyPressed()) {
-
-            if (controller.getCommand() == Command.UP) {
-            System.out.println("Up");
-            }
-            if (controller.getCommand() == Command.LEFT) {
-            System.out.println("Left");}
-            if (controller.getCommand() == Command.DOWN) {
-            System.out.println("Down");}
-            if (controller.getCommand() == Command.RIGHT) {
-            System.out.println("Right");}
-            controller.setKeyPressed(false);
+        while (state.isStarting()) {
+        }
+        while (state.isPausing()) {
+        }
+        while (state.isResuming()) {
+        }
+        while (state.isExiting()) {
         }
 
+        /*if (controller.isKeyPressed()) {
+
+         if (controller.getCommand() == Command.UP) {
+         System.out.println("Up");
+         }
+         if (controller.getCommand() == Command.LEFT) {
+         System.out.println("Left");
+         }
+         if (controller.getCommand() == Command.DOWN) {
+         System.out.println("Down");
+         }
+         if (controller.getCommand() == Command.RIGHT) {
+         System.out.println("Right");
+      
+         }
+         controller.setKeyPressed(false);
+         }*/
     }
 
 }
