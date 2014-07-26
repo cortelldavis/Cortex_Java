@@ -19,6 +19,7 @@ public class ControlStateAdapter {
 
     private Controller controller;
     private GameState state;
+    private boolean TEMPFLAG = false;
 
     public ControlStateAdapter() {
         //contructor
@@ -56,36 +57,56 @@ public class ControlStateAdapter {
     }
 
     void loop() {
+        //System.out.println("looping");
+        // state.onStart();
+        //state.onExit();
+        //state.onResume();
 
-        state.onStart();
-        state.onExit();
+        if (!TEMPFLAG) {
 
-        while (state.isStarting()) {
-        }
-        while (state.isPausing()) {
-        }
-        while (state.isResuming()) {
-        }
-        while (state.isExiting()) {
+            state.onStart();
+           // state.onResume();
+
+            TEMPFLAG = !TEMPFLAG;
         }
 
-        /*if (controller.isKeyPressed()) {
+        if (controller.isKeyPressed()) {
 
-         if (controller.getCommand() == Command.UP) {
-         System.out.println("Up");
+            if (controller.getCommand() == Command.UP) {
+                System.out.println("Up");
+            }
+            if (controller.getCommand() == Command.LEFT) {
+                System.out.println("Left");
+            }
+            if (controller.getCommand() == Command.DOWN) {
+                System.out.println("Down");
+            }
+            if (controller.getCommand() == Command.RIGHT) {
+                System.out.println("Right");
+
+            }
+            controller.setKeyPressed(false);
+        }
+
+        if (controller.isButtonPressed()) {
+            System.out.println(controller.inputType);
+            controller.setButtonPressed(false);
+
+            if (controller.inputType.equals("New Game")) {
+                state.onResume();
+            }
+        }
+        /*
+         while (state.isStarting()) {
          }
-         if (controller.getCommand() == Command.LEFT) {
-         System.out.println("Left");
+         while (state.isPausing()) {
          }
-         if (controller.getCommand() == Command.DOWN) {
-         System.out.println("Down");
+         while (state.isResuming()) {
+
          }
-         if (controller.getCommand() == Command.RIGHT) {
-         System.out.println("Right");
-      
+         while (state.isExiting()) {
          }
-         controller.setKeyPressed(false);
-         }*/
+         */
     }
 
 }

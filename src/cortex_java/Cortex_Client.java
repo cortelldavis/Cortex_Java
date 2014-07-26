@@ -9,6 +9,7 @@ package cortex_java;
 import cortex_java.Controller.Command;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import world.World;
 
 /**
@@ -24,6 +25,7 @@ public class Cortex_Client implements Runnable {
     private GameState clientState;
     private ControlStateAdapter adapter;
     private View vw;
+    private StartScreen startScreen;
 
     public static void main(String args[]) {
         new Thread(new Cortex_Client(), "Cortex_Client").start();
@@ -62,6 +64,7 @@ public class Cortex_Client implements Runnable {
         controller = new Controller();
         adapter = new ControlStateAdapter();
         vw = new View();
+        startScreen = new StartScreen();
     }
 
     @Override
@@ -82,7 +85,19 @@ public class Cortex_Client implements Runnable {
     }
 
     private void resume() {
+        running = true;
         System.out.println("Game has Resumed");
+        vw.removePanel(startScreen.getPanel());
+
+        world.createWorld();
+        r.setWorld(world);
+        vw.setDisplayImage(r.getCompositeRender());
+        vw.getDisplayPanel().setFocusable(true);
+        vw.getDisplayPanel().requestFocusInWindow();
+        vw.getDisplayPanel().addKeyListener(controller);
+
+        vw.updateDisplay();
+
     }
 
     private void exit() {
@@ -96,19 +111,16 @@ public class Cortex_Client implements Runnable {
 
     private void start() {
         System.out.println("Game has Started");
-        /*
 
-         world.createWorld();
-         r.setWorld(world);
-         vw.setDisplayImage(r.getCompositeRender());
-         vw.getDisplayPanel().setFocusable(true);
-         vw.getDisplayPanel().requestFocusInWindow();
-         vw.getDisplayPanel().addKeyListener(controller);
-         vw.updateDisplay();
+        vw.addPanel(startScreen.getPanel());
 
-
-         */
-
+        startScreen.getPanel().setFocusable(true);
+        startScreen.getPanel().requestFocusInWindow();
+        startScreen.getPanel().addKeyListener(controller);
+        for (JButton button : startScreen.getButtons()) {
+            button.addActionListener(controller);
+        }
+        vw.updateDisplay();
     }
 
     private void init() {

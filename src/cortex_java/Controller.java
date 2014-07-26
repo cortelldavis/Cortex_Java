@@ -12,11 +12,20 @@ import java.awt.event.*;
  *
  * @author cortell davis
  */
-public class Controller implements KeyListener {
+public class Controller implements KeyListener, ActionListener {
 
     private boolean keyPressed = false;
+    private boolean buttonPressed = false;
 
-    Command command;
+    public boolean isButtonPressed() {
+        return buttonPressed;
+    }
+
+    public void setButtonPressed(boolean buttonPressed) {
+        this.buttonPressed = buttonPressed;
+    }
+    public String inputType;
+    private Command command;
 
     public Controller() {
 
@@ -69,6 +78,19 @@ public class Controller implements KeyListener {
 
     public void setCommand(Command command) {
         this.command = command;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        /*
+         switch (e.getID()) {
+         case 1:
+         break;
+
+         }*/
+        inputType = e.getActionCommand();
+        setButtonPressed(true);
     }
 
     enum Command {

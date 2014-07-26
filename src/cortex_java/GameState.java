@@ -75,15 +75,20 @@ public class GameState {
     }
 
     public void onStart() {
+        setState(START);
     }
 
     public void onPause() {
+
+        setState(PAUSE);
     }
 
     public void onExit() {
+        setState(EXIT);
     }
 
     public void onResume() {
+        setState(RESUME);
     }
 
     private enum State {
