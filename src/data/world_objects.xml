@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
- You must contact the author of this material, and then ask for permission, before accepting the terms of this license.
- You are not free to copy and redistribute the material in any medium or format.
- You may view the material only to contribute to the material. 
- You may  not use the material in any commercial way.
--->
-
 <world_objects>
     <actors>
         <npc id="1">
@@ -17,7 +10,7 @@
             <willpower>10</willpower>
             <texture>
                 <texture_source>
-                    <texture_source_x1>80</texture_source_x1>
+                    <texture_source_x1>0</texture_source_x1>
                     <texture_source_y1>0</texture_source_y1>
                     <texture_source_x2>96</texture_source_x2>
                     <texture_source_y2>128</texture_source_y2>
