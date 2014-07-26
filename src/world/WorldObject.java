@@ -6,8 +6,8 @@
  */
 package world;
 
-import cortex_java.Direction;
-import cortex_java.Texture;
+import dragonfall.Direction;
+import dragonfall.Texture;
 import java.awt.*;
 
 /**

@@ -6,7 +6,7 @@
  */
 package world;
 
-import cortex_java.ResourceLoader;
+import dragonfall.ResourceLoader;
 import java.util.ArrayList;
 
 /**
