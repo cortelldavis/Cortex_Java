@@ -7,21 +7,23 @@
 package dragonfall;
 
 import dragonfall.Controller.Command;
+import world.WorldObject;
 
 /**
  *
  * @author Cortell Davis <cortelldavis@gmail.com>
  */
-public class ControlStateAdapter {
+public class Adapter {
     /*
-     * This class provides an interface betweenst the controller and state objects of the Controller and GameState classes respectively. 
+     * This class provides an interface between the classes that handle various tasks 
      */
 
     private Controller controller;
     private GameState state;
     private boolean TEMPFLAG = false;
+    private boolean motion = false;
 
-    public ControlStateAdapter() {
+    public Adapter() {
         //contructor
 
         /*
@@ -63,10 +65,7 @@ public class ControlStateAdapter {
         //state.onResume();
 
         if (!TEMPFLAG) {
-
             state.onStart();
-           // state.onResume();
-
             TEMPFLAG = !TEMPFLAG;
         }
 
@@ -74,15 +73,19 @@ public class ControlStateAdapter {
 
             if (controller.getCommand() == Command.UP) {
                 System.out.println("Up");
+                setMotionEnabled(true);
             }
             if (controller.getCommand() == Command.LEFT) {
                 System.out.println("Left");
+                setMotionEnabled(true);
             }
             if (controller.getCommand() == Command.DOWN) {
                 System.out.println("Down");
+                setMotionEnabled(true);
             }
             if (controller.getCommand() == Command.RIGHT) {
                 System.out.println("Right");
+                setMotionEnabled(true);
 
             }
             controller.setKeyPressed(false);
@@ -107,6 +110,30 @@ public class ControlStateAdapter {
          while (state.isExiting()) {
          }
          */
+    }
+
+    boolean isMotionEnabled() {
+        return motion;
+    }
+
+    public void setMotionEnabled(boolean motion) {
+        this.motion = motion;
+    }
+
+    void setObjectDirection(WorldObject worldObject) {
+        if (controller.getCommand() == Command.UP) {
+            worldObject.setDirection(Direction.NORTH);
+        }
+        if (controller.getCommand() == Command.LEFT) {
+            worldObject.setDirection(Direction.WEST);
+        }
+        if (controller.getCommand() == Command.DOWN) {
+            worldObject.setDirection(Direction.SOUTH);
+        }
+        if (controller.getCommand() == Command.RIGHT) {
+            worldObject.setDirection(Direction.EAST);
+        }
+
     }
 
 }

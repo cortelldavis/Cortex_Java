@@ -36,7 +36,7 @@ public class World {
     }
 
     public void createWorld() {
-                                                                 createWorldObjectById(2);
+        createWorldObjectById(2);
         createWorldObjectById(1);
         createWorldObjectById(3);
         createWorldMap();
@@ -46,6 +46,7 @@ public class World {
     public void createWorldObjectById(int id) {
 
         WorldObject worldObject = ResourceLoader.getWorldObjectById(id);
+        worldObject.setPosition(300,300);
         worldObjects.add(worldObject);
         worldHasChanged();
 
@@ -64,9 +65,9 @@ public class World {
 
     }
 
-    public void moveWorldObject() {
+    public void moveWorldObject(int id) {
 
-        worldObjects.get(0).move();
+        getWorldObjectById(id).move();
         worldHasChanged();
     }
 

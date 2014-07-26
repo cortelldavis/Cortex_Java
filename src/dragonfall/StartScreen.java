@@ -75,7 +75,7 @@ class StartScreen {
             g.drawImage(img, 0, 0, this);
             g.setColor(Color.white);
             g.setFont(new Font("TimesRoman", Font.PLAIN, 42)); 
-            g.drawString("Start Game",(getWidth()/2)-100,getHeight()/2);
+            g.drawString("Dragonfall",(getWidth()/2)-100,getHeight()/2);
         }
     }
 }

@@ -38,6 +38,7 @@ public class WorldObject {
         collidable = false;
         texture = new Texture();
         animated_state = 1;
+        direction = direction.NORTH;
     }
 
     public boolean isCollidable() {

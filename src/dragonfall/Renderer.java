@@ -118,12 +118,12 @@ public class Renderer implements WorldListener {
         composite_GO.setColor(Color.BLACK);
         composite_GO.fillRect(0, 0, 800, 600);
         composite_GO.drawImage(compositeArray[0], 0, 0, 800, 600, null);
-        composite_GO.drawImage(compositeArray[1], 0, 0, null);
+        composite_GO.drawImage(compositeArray[1], world.getWorldObjectById(1).getXPosition(),world.getWorldObjectById(1).getYPosition(), null);
     }
 
     public void renderWorldObject(WorldObject worldObject) {
 
-        compositeArray[1] = ResourceLoader.getImage(worldObject.getTexture().getTextureAddress()).getSubimage(worldObject.getTexture().getTextureSource_x1(), worldObject.getTexture().getTextureSource_y1(), 96, 128);
+        compositeArray[1] = ResourceLoader.getImage(worldObject.getTexture().getTextureAddress()).getSubimage(worldObject.getTexture().getTextureSource_x1(), worldObject.getTexture().getTextureSource_y1(), 32, 32);
 
     }
 }

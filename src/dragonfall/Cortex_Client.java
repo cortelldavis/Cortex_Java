@@ -17,103 +17,112 @@ import world.World;
  * @author cortell davis
  */
 public class Cortex_Client implements Runnable {
-
+    
     private Controller controller;
     private static boolean running;
     private World world;
     private Renderer r;
     private GameState clientState;
-    private ControlStateAdapter adapter;
+    private Adapter adapter;
     private View vw;
     private StartScreen startScreen;
-
+    
     public static void main(String args[]) {
         new Thread(new Cortex_Client(), "Cortex_Client").start();
     }
-
+    
     public Cortex_Client() {
         clientState = new GameState() {
-
+            
             @Override
             public void onResume() {
                 super.onResume();
                 resume();
             }
-
+            
             @Override
             public void onExit() {
                 super.onExit();
                 exit();
             }
-
+            
             @Override
             public void onPause() {
                 super.onPause();
                 pause();
             }
-
+            
             @Override
             public void onStart() {
                 super.onStart();
                 start();
             }
-
+            
         };
         world = new World();
         r = new Renderer();
         controller = new Controller();
-        adapter = new ControlStateAdapter();
+        adapter = new Adapter();
         vw = new View();
         startScreen = new StartScreen();
     }
-
+    
     @Override
     public void run() {
-
+        
         init();
         while (running) {
-
+            
             adapter.loop();
-
+            
+            if (adapter.isMotionEnabled()) {
+                
+                adapter.setObjectDirection(world.getWorldObjectById(1));
+                world.moveWorldObject(1);
+                adapter.setMotionEnabled(false);
+                vw.updateDisplay();
+                System.out.println("moved");
+            }
+            
             try {
                 Thread.sleep(30);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Cortex_Client.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+        
     }
-
+    
     private void resume() {
         running = true;
         System.out.println("Game has Resumed");
         vw.removePanel(startScreen.getPanel());
-
+        
         world.createWorld();
         r.setWorld(world);
         vw.setDisplayImage(r.getCompositeRender());
         vw.getDisplayPanel().setFocusable(true);
         vw.getDisplayPanel().requestFocusInWindow();
         vw.getDisplayPanel().addKeyListener(controller);
-
+        
         vw.updateDisplay();
-
+        
     }
-
+    
     private void exit() {
         running = false;
         System.out.println("Game has Stopped");
     }
-
+    
     private void pause() {
         System.out.println("Game has Paused");
     }
-
+    
     private void start() {
         System.out.println("Game has Started");
-
+        
         vw.addPanel(startScreen.getPanel());
-
+        
         startScreen.getPanel().setFocusable(true);
         startScreen.getPanel().requestFocusInWindow();
         startScreen.getPanel().addKeyListener(controller);
@@ -122,7 +131,7 @@ public class Cortex_Client implements Runnable {
         }
         vw.updateDisplay();
     }
-
+    
     private void init() {
         clientState.setState(clientState.START);
         adapter.setState(clientState);
