@@ -77,6 +77,9 @@ public class Cortex_Client implements Runnable {
             
             if (adapter.isMotionEnabled()) {
                 
+                //check for edge of screen if so then move map appropriately
+                  //world.getWorldMap("src/res/xml/myMap.tmx").setMapX(world.getWorldMap("src/res/xml/myMap.tmx").getMapX()-100);
+                
                 adapter.setObjectDirection(world.getWorldObjectById(1));
                 world.moveWorldObject(1);
                 adapter.setMotionEnabled(false);
@@ -106,7 +109,7 @@ public class Cortex_Client implements Runnable {
         vw.getDisplayPanel().addKeyListener(controller);
         
         vw.updateDisplay();
-        
+      
     }
     
     private void exit() {

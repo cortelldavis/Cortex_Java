@@ -19,8 +19,34 @@ public class WorldMap {
     //The Map Class will handle the positioning of world objects ,the layout of floor tiles, the collection of in world things, and other map related things. 
     //The Map Class will also handle nodes, grids, cells, and local map transitions to other adjacent maps.
     private HashMap<Integer, String> mapping;
-    private String width, height, tileWidth, tileHeight;
-    ArrayList<String> source;
+    private String width, height, tileWidth, tileHeight, filename;
+    private int mapX=0,mapY=0;
+    private ArrayList<String> source;
+    
+    public int getMapX() {
+        return mapX;
+    }
+
+    public void setMapX(int mapX) {
+        this.mapX = mapX;
+    }
+
+    public int getMapY() {
+        return mapY;
+    }
+
+    public void setMapY(int mapY) {
+        this.mapY = mapY;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
 
     public String getWidth() {
         return width;

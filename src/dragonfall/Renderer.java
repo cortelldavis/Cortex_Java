@@ -63,7 +63,7 @@ public class Renderer implements WorldListener {
         HashMap gidTileCoordinates = new HashMap< Point, Integer>();
         int gidPallete = 1, gidX = 0, gidY = 0;
         BufferedImage[] mapPallete = new BufferedImage[worldMap.getSource().size()];
-        BufferedImage temp = new BufferedImage(Integer.parseInt(worldMap.getWidth()) * Integer.parseInt(worldMap.getTileWidth()), Integer.parseInt(worldMap.getHeight()) * Integer.parseInt(worldMap.getTileHeight()), BufferedImage.TYPE_INT_ARGB);
+        BufferedImage map = new BufferedImage(Integer.parseInt(worldMap.getWidth()) * Integer.parseInt(worldMap.getTileWidth()), Integer.parseInt(worldMap.getHeight()) * Integer.parseInt(worldMap.getTileHeight()), BufferedImage.TYPE_INT_ARGB);
         for (int i = 0; i < worldMap.getSource().size(); i++) {
             mapPallete[i] = ResourceLoader.getImage((String) worldMap.getSource().get(i));
         }
@@ -99,25 +99,25 @@ public class Renderer implements WorldListener {
                 if (gid >= 25) {
                     gidPallete = 2;
                 }
-                temp.getGraphics().drawImage(mapPallete[gidPallete].getSubimage(gidX, gidY, 32, 32), column * 32, row * 32, null);
+                map.getGraphics().drawImage(mapPallete[gidPallete].getSubimage(gidX, gidY, 32, 32), column * 32, row * 32, null);
                 count++;
             }
             column = 0;
         }
-        compositeArray[0] = temp;
+        compositeArray[0] = map;
     }
 
     private void render(World world) {
 
         //render local map
-        render(world.getWorldMap());
+        render(world.getWorldMap("src/res/xml/myMap.tmx"));
         //render world objects
         renderWorldObject(world.getWorldObjectById(1));
 
         //testing purposes
         composite_GO.setColor(Color.BLACK);
         composite_GO.fillRect(0, 0, 800, 600);
-        composite_GO.drawImage(compositeArray[0], 0, 0, 800, 600, null);
+        composite_GO.drawImage(compositeArray[0], world.getWorldMap("src/res/xml/myMap.tmx").getMapX(), world.getWorldMap("src/res/xml/myMap.tmx").getMapY(), 800, 600, null);
         composite_GO.drawImage(compositeArray[1], world.getWorldObjectById(1).getXPosition(),world.getWorldObjectById(1).getYPosition(), null);
     }
 

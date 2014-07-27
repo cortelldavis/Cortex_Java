@@ -70,11 +70,11 @@ public class WorldMap_XML_Parser {
         return mapping;
     }
 
-    public void parse() {
+    public void parse(String filename) {
         mapping = new HashMap< Integer, String>();
         source = new ArrayList<String>();
         try {
-            File fXmlFile = new File("src/res/xml/myMap.tmx");
+            File fXmlFile = new File(filename);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);

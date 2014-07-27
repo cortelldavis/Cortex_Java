@@ -60,11 +60,11 @@ public class ResourceLoader {
         return worldObject;
     }
 
-    public static WorldMap getWorldMap() {
+    public static WorldMap getWorldMap(String filename) {
 
         WorldMap worldMap = new WorldMap();
-        Map_Parser.parse();
-
+        Map_Parser.parse(filename);
+        worldMap.setFilename(filename);
         worldMap.setMapping(Map_Parser.getMapping());
         worldMap.setHeight(Map_Parser.getHeight());
         worldMap.setSource(Map_Parser.getSource());

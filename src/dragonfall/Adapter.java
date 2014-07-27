@@ -67,6 +67,7 @@ public class Adapter {
         if (!TEMPFLAG) {
             state.onStart();
             TEMPFLAG = !TEMPFLAG;
+
         }
 
         if (controller.isKeyPressed()) {
@@ -87,8 +88,9 @@ public class Adapter {
                 System.out.println("Right");
                 setMotionEnabled(true);
 
+            } else {
+                controller.setKeyPressed(false);
             }
-            controller.setKeyPressed(false);
         }
 
         if (controller.isButtonPressed()) {
