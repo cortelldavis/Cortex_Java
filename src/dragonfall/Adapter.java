@@ -95,7 +95,7 @@ public class Adapter {
             System.out.println(controller.inputType);
             controller.setButtonPressed(false);
 
-            if (controller.inputType.equals("New Game")) {
+            if (controller.inputType.equals("Start Game")) {
                 state.onResume();
             }
         }

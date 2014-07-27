@@ -42,9 +42,9 @@ class StartScreen {
     public StartScreen() {
         img = ResourceLoader.getImage("/res/images/startscreen.png");
         buttons = new ArrayList<JButton>();
-        buttons.add(new JButton("New Game"));
-        buttons.add(new JButton("Load Game"));
-        buttons.add(new JButton("Options"));
+        buttons.add(new JButton("Start Game"));
+       // buttons.add(new JButton("Load Game"));
+       // buttons.add(new JButton("Options"));
         buttons.add(new JButton("Exit Game"));
         panel = new Panel();
         panel.setBounds(0,0,800,600);

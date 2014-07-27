@@ -123,7 +123,7 @@ public class Renderer implements WorldListener {
 
     public void renderWorldObject(WorldObject worldObject) {
 
-        compositeArray[1] = ResourceLoader.getImage(worldObject.getTexture().getTextureAddress()).getSubimage(worldObject.getTexture().getTextureSource_x1(), worldObject.getTexture().getTextureSource_y1(), 32, 32);
+        compositeArray[1] = ResourceLoader.getImage(worldObject.getTexture().getTextureAddress()).getSubimage(worldObject.getTexture().getTextureFrame_x1(),  worldObject.getTexture().getTextureFrame_y1(), worldObject.getTexture().getTextureFrame_x2(),  worldObject.getTexture().getTextureFrame_y2());
 
     }
 }
