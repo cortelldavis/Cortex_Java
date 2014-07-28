@@ -88,9 +88,10 @@ public class Adapter {
                 System.out.println("Right");
                 setMotionEnabled(true);
 
-            } else {
+            } 
                 controller.setKeyPressed(false);
-            }
+
+            
         }
 
         if (controller.isButtonPressed()) {

@@ -46,21 +46,24 @@ public class Controller implements KeyListener, ActionListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        setKeyPressed(true);
 
         switch (e.getKeyCode()) {
 
             case KeyEvent.VK_UP:
                 command = Command.UP;
+                setKeyPressed(true);
                 break;
             case KeyEvent.VK_LEFT:
                 command = Command.LEFT;
+                setKeyPressed(true);
                 break;
             case KeyEvent.VK_DOWN:
                 command = Command.DOWN;
+                setKeyPressed(true);
                 break;
             case KeyEvent.VK_RIGHT:
                 command = Command.RIGHT;
+                setKeyPressed(true);
                 break;
 
         }

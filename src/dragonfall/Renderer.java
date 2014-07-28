@@ -25,6 +25,7 @@ import world.WorldObject;
 public class Renderer implements WorldListener {
 
     BufferedImage compositeLayer, compositeArray[];
+    ArrayList<BufferedImage> compositeList;
     Graphics2D composite_GO;
     World world;
 
@@ -33,6 +34,7 @@ public class Renderer implements WorldListener {
         composite_GO = compositeLayer.createGraphics();
 
         compositeArray = new BufferedImage[10];
+        compositeList = new ArrayList<BufferedImage>();
     }
 
     @Override
@@ -92,10 +94,10 @@ public class Renderer implements WorldListener {
                 if (gid <= 12) {
                     gidPallete = 0;
                 }
-                if (gid >= 13&&gid<25) {
+                if (gid >= 13 && gid < 25) {
                     gidPallete = 1;
                 }
-                
+
                 if (gid >= 25) {
                     gidPallete = 2;
                 }
@@ -104,26 +106,33 @@ public class Renderer implements WorldListener {
             }
             column = 0;
         }
-        compositeArray[0] = map;
+
+        compositeList.add(map);
     }
 
     private void render(World world) {
 
         //render local map
         render(world.getWorldMap("src/res/xml/myMap.tmx"));
+        render(world.getWorldMap("src/res/xml/mu1.tmx"));
         //render world objects
         renderWorldObject(world.getWorldObjectById(1));
+
+
 
         //testing purposes
         composite_GO.setColor(Color.BLACK);
         composite_GO.fillRect(0, 0, 800, 600);
-        composite_GO.drawImage(compositeArray[0], world.getWorldMap("src/res/xml/myMap.tmx").getMapX(), world.getWorldMap("src/res/xml/myMap.tmx").getMapY(), 800, 600, null);
-        composite_GO.drawImage(compositeArray[1], world.getWorldObjectById(1).getXPosition(),world.getWorldObjectById(1).getYPosition(), null);
+
+        composite_GO.drawImage(compositeList.get(0), world.getWorldMap("src/res/xml/myMap.tmx").getMapX(), world.getWorldMap("src/res/xml/myMap.tmx").getMapY(), 800, 600, null);
+        composite_GO.drawImage(compositeList.get(1), world.getWorldMap("src/res/xml/mu1.tmx").getMapX(), world.getWorldMap("src/res/xml/mu1.tmx").getMapY(), 800, 600, null);
+
+        composite_GO.drawImage(compositeArray[1], world.getWorldObjectById(1).getXPosition(), world.getWorldObjectById(1).getYPosition(), null);
     }
 
     public void renderWorldObject(WorldObject worldObject) {
 
-        compositeArray[1] = ResourceLoader.getImage(worldObject.getTexture().getTextureAddress()).getSubimage(worldObject.getTexture().getTextureFrame_x1(),  worldObject.getTexture().getTextureFrame_y1(), worldObject.getTexture().getTextureFrame_x2(),  worldObject.getTexture().getTextureFrame_y2());
+        compositeArray[1] = ResourceLoader.getImage(worldObject.getTexture().getTextureAddress()).getSubimage(worldObject.getTexture().getTextureFrame_x1(), worldObject.getTexture().getTextureFrame_y1(), worldObject.getTexture().getTextureFrame_x2(), worldObject.getTexture().getTextureFrame_y2());
 
     }
 }

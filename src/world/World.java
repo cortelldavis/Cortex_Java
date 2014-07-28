@@ -43,6 +43,7 @@ public class World {
         createWorldObjectById(3);
         createWorldMap("src/res/xml/myMap.tmx");
         createWorldMap("src/res/xml/mu1.tmx");
+        getWorldMap("src/res/xml/mu1.tmx").setMapY(-600);
         worldHasChanged();
     }
 

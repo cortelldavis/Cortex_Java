@@ -6,7 +6,6 @@
  */
 package dragonfall;
 
-import world.WorldMap;
 import data.Actor_XML_Parser;
 import data.WorldMap_XML_Parser;
 import java.awt.image.BufferedImage;
@@ -14,6 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
+import world.WorldMap;
 import world.WorldObject;
 
 /**
